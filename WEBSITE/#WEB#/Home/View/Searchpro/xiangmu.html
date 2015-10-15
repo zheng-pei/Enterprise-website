@@ -1,0 +1,24 @@
+<include file="Public:header"/>
+<include file="Public:static_pic"/>
+<include file="Public:leftmenu"/>
+<!--研究项目列表-->
+   <div class="program mrt30">
+       <ul>
+        <volist name="lists" id="vo">
+         <li>
+         <a href="{sk::U('News/news',array('pid'=>$pid,'cateid'=>$cateid,'versionid'=>$versionid,'id'=>$vo['id']))}">
+         <i class="arr fonth"><p>{sk:$vo['code']}</p><if condition="$versionid eq 1">项目<else/>project</if></i>
+           <div class="p_right">
+           <h3 class="ells fonth"><font color="{sk:$vo['color']}" class="fs18">{sk:$vo.title}</font></h3>
+            <p class="color84">{sk:$vo.content|htmlspecialchars_decode|strip_tags|msubstr=0,500}</p>
+            <b class="color_blue xq"><if condition="$versionid eq 1">点击查看详情<else/>Click to view the details</if>>></b>
+           </div>
+           </a>
+         </li>
+       </volist>
+       </ul>
+    </div>
+     <span class="guidelist">{sk:$page}</span>
+   </div> 
+  </div>
+<include file="Public:footer"/> 

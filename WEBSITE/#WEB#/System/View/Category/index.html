@@ -1,0 +1,116 @@
+<include file="Public:header" />
+<div id="main">
+  <div class="container-fluid">
+    <div class="row-fluid">
+      <div class="span12">
+        <div class="box">
+          <div class="box-title">
+            <div class="span2">
+              <h3> <i class="icon-table"></i>
+                栏目管理
+              </h3>
+            </div>
+            <div class="fr">
+              <form name="searchform" action="{sk::U('Category/index')}" method="post" class="form-horizontal">
+                  <select class="input-medium" name="versionid" id="ver" data-rule-required="true" data-rule-notem="true">
+                 <option value="0">网站版本</option>
+                 <volist name="versionlist" id="vo"> <option value="{sk:$key}" <if condition="$versionid eq $key"> selected="selected" </if>>{sk:$vo}</option></volist>
+                 </select>&nbsp;
+                <input type="submit" id="dosubmit" name="search" class="btncx" value="搜索" />
+             </form>
+            </div>
+          </div>
+          <div class="box-content nozypadding" style="width:100%;">
+            <div class="row-fluid">
+              <div class="span8 control-group">
+                <a class="btn" href="{sk::U('Category/add')}"> <i class="icon-plus"></i>
+                  添加栏目
+                </a>　<a class="btn" href="javascript:location.reload()">
+                  <i class="icon-refresh"></i>
+                  刷新
+                </a>
+              </div>
+            </div>
+            <div class="row-fluid dataTables_wrapper">
+              <table id="listTable" class="table table-hover table-nomargin table-bordered usertable dataTable">
+                <thead >
+                  <tr>
+                    <th>栏目ID</th>
+                    <th>栏目名称</th>
+                    <th>栏目排序</th>
+                    <th>栏目模型</th>
+                    <th>版本</th>             
+                    <th>操作</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <volist name="list" id="vo">
+                <tr class="tr">
+                  <td class="span2">{sk:$vo.id}</td>
+                  <td class="span4">{sk:$vo.catename}</td>
+                  <td class="span4">{sk:$vo.sort}</td>
+                  <td class="span4">
+                  <if condition="$vo.columnmodel eq 1">
+                    <font color="blue">文章类模型</font>
+                  <elseif condition="$vo.columnmodel eq 2"/>
+                    <font color="green">图文混合类模型</font>
+                  <else/>
+                    <font color="red">图集类模型</font>
+                  </if>
+                  </td>
+                  <td>
+                      {sk:$vo.versionname}
+                  </td>
+                  <td>
+                      <a href="{sk::U('Category/edit',array('id'=>
+                      $vo['id']))}" class="btnra" title="编辑">
+                      <i class="icon-edit"></i>
+                      编辑
+                    </a>
+                    <a href="javascript: G.ui.tips.confirm('确定删除？','{sk::U("Category/foreverdelete",array('id'=>
+                      $vo['id']))}')" class="btnra" title="删除">
+                      <i class="icon-remove"></i>
+                      删除
+                    </a>
+                  </td>
+                </tr>
+                  <volist name="vo['sub']" id="subvo">
+                    <tr class="tr">
+                      <td align="center">{sk:$subvo.id}</td>
+                      <td align="left">--------{sk:$subvo.catename}</td>
+                      <td>{sk:$subvo.sort}</td>
+                      <td>
+                        <if condition="$subvo.columnmodel eq 1">
+                          <font color="blue">文章类模型</font>
+                        <elseif condition="$subvo.columnmodel eq 2"/>
+                        <font color="green">图文混合类模型</font>
+                        <elseif condition="$subvo.columnmodel eq 3"/>
+                        <font color="red">图集类模型</font>
+                        </if>
+                      </td>
+                      <td>{sk:$vo.versionname}</td>
+                      <td>
+                          <a href="{sk::U('Category/edit',array('id'=>
+                          $subvo['id']))}" class="btnra" title="编辑">
+                          <i class="icon-edit"></i>
+                          编辑
+                        </a>
+                        <a href="javascript: G.ui.tips.confirm('确定删除？','{sk::U("Category/foreverdelete",array('id'=>
+                          $subvo['id']))}')" class="btnra" title="删除">
+                          <i class="icon-remove"></i>
+                          删除
+                        </a>
+                      </td>
+                    </tr>
+                  </volist>
+                </volist>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<include file="Public:footer" />

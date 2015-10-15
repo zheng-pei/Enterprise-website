@@ -1,0 +1,108 @@
+<include file="Public:header" />
+<div id="main">
+  <div class="container-fluid">
+    <div class="row-fluid">
+      <div class="span12">
+        <div class="box">
+          <div class="box-title">
+            <div class="span2">
+              <h3> <i class="icon-table"></i>
+                文章列表管理
+              </h3>
+            </div>
+            <div class="fr">
+              <form name="searchform" action="{sk::U('Article/lists')}" method="post" class="form-horizontal">
+              <input type="hidden" name="cateid" value="{sk:$cateid}"/>
+               <select class="input-medium" name="catename">
+                 <option value="0">子栏目分类</option>
+                 <volist name="subcolumn" id="vo"><option value="{sk:$key}" <if condition="$catename eq $key"> selected="selected" </if>>{sk:$vo}</option></volist>
+                 </select>&nbsp;     
+               <input name="title" type="text" class="input-medium" value="{sk:$title}" placeholder="文章标题"/>
+                <input name="source" type="text" class="input-medium" value="{sk:$source}" placeholder="文章来源"/>
+             <select class="input-small" name="_order">
+                 <option value="createtime" <if condition="$_order eq 'createtime'"> selected="selected" </if>>按时间</option>
+                  <option value="hits" <if condition="$_order eq 'hits'"> selected="selected" </if>>按浏览量</option>
+                 </select>&nbsp;
+                 <select class="input-medium" name="_sort" id="ver" data-rule-required="true" data-rule-notem="true">
+                 <option value="asc" <if condition="$_sort eq 'asc'"> selected="selected" </if>>升序排列</option>
+                 <option value="desc" <if condition="$_sort eq 'desc'"> selected="selected" </if>>降序排列</option>
+                 </select>&nbsp;
+                  <select name="status"  class="input-small-s"> 
+                   <option value="">所有状态</option>
+                   <option value="1" <if condition="$status eq 1"> selected="selected" </if>>已发布</option>
+                   <option value="2" <if condition="$status eq 2"> selected="selected" </if>>未发布</option>
+                 </select>&nbsp; 
+                  <input type="submit" id="dosubmit" name="search" class="btncx" value="搜索" />
+             </form>
+            </div>
+          </div>
+          <div class="box-content nozypadding" style="width:100%;">
+           
+            <div class="row-fluid dataTables_wrapper">
+          
+              <table id="listTable" class="table table-hover table-nomargin table-bordered usertable dataTable">
+                <thead >
+                  <tr>
+                    <th>编号</th>
+                    <th>文章标题</th>
+                    <th>栏目名称</th>
+                    <th>封面图片</th>
+                    <th>浏览量</th>
+                    <th>文章来源</th>
+                    <th>文章编辑者</th>
+                    <th>时间</th>    
+                    <th>状态</th>            
+                    <th>操作</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <volist name="list" id="vo">
+                    <tr>
+                      <td>{sk:$vo.id}</td>
+                      <td>{sk:$vo.title}</td> 
+                      <td>{sk:$vo.catename}</td>                           
+                      <td>
+                      <if condition="$vo['pic'] neq ''">
+                      <img src="{sk:$vo.pic}" width="50px;" height="40px">
+                      <else/>未上传图片
+                      </if>
+                      </td>
+                      <td>{sk:$vo.hits}</td>
+                      <td>{sk:$vo.source}</td>
+                      <td>{sk:$vo.author}</td>
+                      <td>{sk:$vo.createtime|date="Y-m-d H:i:s",###}</td>
+                      <td class="statuscg">
+                      <if condition="$vo.status eq 1">
+                        <span class="label label-success">已发布</span>
+                        <elseif condition="$vo.status eq 2" />
+                        <span class="label label-warning">未发布</span>
+                      </if>
+                    </td> 
+                    <td>
+                      <if condition="$vo['status'] eq 1">
+                       <a href="javascript: drop_confirm('确定禁用？','{sk::U('Article/changestatus',array('cateid'=>$cateid,'id'=>$vo['id'],'status'=>2,'p'=>$p))}')" class="btnra" title="禁用"><i class="icon-stop"></i>未发布</a>
+                       <else />
+                       <a href="javascript: drop_confirm('确定启用？','{sk::U('Article/changestatus',array('cateid'=>$cateid,'id'=>$vo['id'],'status'=>1,'p'=>$p))}')" class="btnra" title="启用"><i class="icon-play"></i>已发布</a>
+                       </if>
+                      <a href="{sk::U('Article/edit',array('cateid'=>$vo['cateid'],'id'=>$vo['id']))}" class="btnra" title="编辑">
+                        <i class="icon-edit"></i>
+                        编辑
+                      </a>
+                      <a href="javascript: G.ui.tips.confirm('确定删除？','{sk::U('Article/delete',array('cateid'=>$vo['cateid'],'id'=>$vo['id']))}')" class="btnra" title="删除">
+                        <i class="icon-remove"></i>
+                        删除
+                      </a>
+                    </td>
+                  </tr>
+                </volist>
+              </tbody>
+            </table>
+            <div class="dataTables_paginate paging_full_numbers"><span>{sk:$page}</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<include file="Public:footer" />

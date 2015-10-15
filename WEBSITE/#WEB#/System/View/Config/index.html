@@ -1,0 +1,71 @@
+<include file="Public:header" />
+<body>
+<div id="main">
+  <div class="container-fluid">
+    <div class="row-fluid">
+      <div class="span12">
+        <div class="box">
+          <div class="box-title">
+            <div class="span10">
+              <h3> <i class="icon-edit"></i>
+                网站的设置
+              </h3>
+            </div>
+            <div class="span2"></div>
+          </div>
+          <div class="box-content">
+            <form action="{sk::U('Config/saveconfig')}" method="post" id="form1" class="form-horizontal form-validate" enctype="multipart/form-data" >
+              <div class="control-group"> 
+                <div class="controls">
+                <label for="versionid" class="control-label">语言版本：</label>
+                 <select name="versionid" id="versionid" onchange="changeversion();">
+                <volist name="list" id="vo">
+                  <option value="{sk:$vo.id}">{sk:$vo.versionname}</option>
+                </volist>
+              </select>
+               </div>
+              </div>
+              <div class="control-group" id="v1" >  
+              </div>
+            <div class="form-actions">
+              <button id="bsubmit" type="submit" data-loading-text="提交中..." class="btn btn-primary">保存</button>
+              <a class="btn" href="javascript:history.back();">取消</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<script type="text/javascript">
+function changeversion(){
+  var id=$('#versionid').val();
+  $.ajax({
+    url:"{sk::U('Config/versioninfo')}",
+    type:'post',
+    data:{id:id},
+    success:function(data){
+      var json = eval('(' + data + ')');
+      // 清空div里面的数据
+      $('#v1').html('');
+      var str="";
+      // alert(json.length);
+      for(var i=0;i<json.length;i++){
+        if((json[i]['showtype'])==1){
+          str+=" <div class='controls'> <label class='control-label' for='content'>"+json[i]['title']+" </label><input name='"+json[i]['fieldname']+"' type='text' class='input-large' data-rule-required='true' value='"+json[i]['fieldvalue']+"' /> <span class='maroon'>*"+json[i]['tips']+"</span> </div>";
+        }
+        if((json[i]['showtype'])==2){
+          str+=" <div class='controls'> <label class='control-label' for='content'>"+json[i]['title']+" </label><input name='"+json[i]['fieldname']+"' type='url' class='input-large' data-rule-required='true' value='"+json[i]['fieldvalue']+"' /> <span class='maroon'>*"+json[i]['tips']+"</span> </div>";
+        }
+         if((json[i]['showtype'])==3){
+          str+=" <div class='controls'> <label class='control-label' for='content'>"+json[i]['title']+" </label><textarea name='"+json[i]['fieldname']+"'  rows='8' cols='10' class='input-xlarge' style='width:300px;resize:none' data-rule-required='true'> "+json[i]['fieldvalue']+"</textarea> <span class='maroon'>*"+json[i]['tips']+"</span> </div>";
+        }
+      }
+      $('#v1').html(str);
+    }
+  });
+}
+changeversion();
+</script>
+<include file="Public:footer" />

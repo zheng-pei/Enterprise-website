@@ -1,0 +1,268 @@
+[ 2015-09-06T18:02:39+08:00 ] ::1 /pro/public_html/index.php?m=Home&c=Index&a=index&versionid=1
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000029s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000530s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000728s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000915s ]
+SQL: SHOW COLUMNS FROM `sk_category` [ RunTime:0.0028s ]
+SQL: SELECT sk_category.id,`catename` FROM `sk_category` WHERE `pid` = 0 AND `versionid` = 1 ORDER BY id,sort asc  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `sk_category` WHERE `pid` = 1 AND `versionid` = 1 ORDER BY sort asc  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `sk_category` WHERE `pid` = 2 AND `versionid` = 1 ORDER BY sort asc  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `sk_category` WHERE `pid` = 3 AND `versionid` = 1 ORDER BY sort asc  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `sk_category` WHERE `pid` = 4 AND `versionid` = 1 ORDER BY sort asc  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `sk_category` WHERE `pid` = 5 AND `versionid` = 1 ORDER BY sort asc  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `sk_category` WHERE `pid` = 6 AND `versionid` = 1 ORDER BY sort asc  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `sk_category` WHERE `pid` = 7 AND `versionid` = 1 ORDER BY sort asc  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `sk_category` WHERE `pid` = 8 AND `versionid` = 1 ORDER BY sort asc  [ RunTime:0.0004s ]
+SQL: SELECT * FROM `sk_category` WHERE `pid` = 9 AND `versionid` = 1 ORDER BY sort asc  [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `sk_config` [ RunTime:0.0031s ]
+SQL: SELECT `fieldvalue` FROM `sk_config` WHERE `title` = '网站关键字' AND `fieldname` = 'keyword' AND `versionid` = 1 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `fieldvalue` FROM `sk_config` WHERE `title` = '网站描述' AND `fieldname` = 'des' AND `versionid` = 1 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `sk_pics` [ RunTime:0.0029s ]
+SQL: SELECT * FROM `sk_pics` WHERE `title` LIKE '%logo%' AND `status` = 1 AND `versionid` = 1 ORDER BY id desc LIMIT 1   [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `sk_shuffling` [ RunTime:0.0032s ]
+SQL: SELECT * FROM `sk_shuffling` WHERE `status` = 1 AND `versionid` = 1 ORDER BY createtime desc LIMIT 4   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `sk_pics` WHERE `versionid` = 1 AND `status` = 1 AND `title` LIKE '%静%' ORDER BY id desc LIMIT 9   [ RunTime:0.0004s ]
+NOTIC: [8] Undefined index: pid D:\WampServer2\www\pro\WEBSITE\#WEB#\Home\Controller\CommonController.class.php 第 109 行.
+SQL: SELECT * FROM `sk_category` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `sk_category` WHERE ( pid=1 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `sk_article` [ RunTime:0.0057s ]
+SQL: SELECT * FROM `sk_article` WHERE ( cateid=10 ) ORDER BY sort desc LIMIT 1   [ RunTime:0.0006s ]
+SQL: SELECT `catename` FROM `sk_category` WHERE ( id=7 )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `sk_article` WHERE `status` = 1 AND `cateid` = 22 ORDER BY id desc,istop desc LIMIT 4   [ RunTime:0.0007s ]
+SQL: SELECT `catename` FROM `sk_category` WHERE `id` = 16 AND `versionid` = 1  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `sk_article` WHERE `status` = 1 AND `versionid` = 1 AND `cateid` = 16 ORDER BY id desc,istop desc LIMIT 4   [ RunTime:0.0005s ]
+SQL: SELECT `catename` FROM `sk_category` WHERE `id` = 8 AND `versionid` = 1 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `sk_article` WHERE `cateid` = 23 AND `status` = 1 AND `versionid` = 1 ORDER BY id desc,istop desc LIMIT 6   [ RunTime:0.0005s ]
+SQL: SELECT `catename` FROM `sk_category` WHERE `id` = 2 AND `versionid` = 1 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `sk_article` WHERE `cateid` = 13 AND `status` = 1 AND `versionid` = 1 ORDER BY id desc,istop desc LIMIT 6   [ RunTime:0.0005s ]
+SQL: SELECT `catename` FROM `sk_category` WHERE `id` = 5 AND `versionid` = 1 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `sk_article` WHERE `cateid` = 19 AND `status` = 1 AND `versionid` = 1 ORDER BY id desc,istop desc LIMIT 6   [ RunTime:0.0008s ]
+INFO: [ view_parse ] --START--
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead D:\WampServer2\www\pro\Tpcore\#CORE#\Library\Think\Template.class.php 第 188 行.
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead D:\WampServer2\www\pro\Tpcore\#CORE#\Library\Think\Template.class.php 第 188 行.
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead D:\WampServer2\www\pro\Tpcore\#CORE#\Library\Think\Template.class.php 第 188 行.
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead D:\WampServer2\www\pro\Tpcore\#CORE#\Library\Think\Template.class.php 第 188 行.
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead D:\WampServer2\www\pro\Tpcore\#CORE#\Library\Think\Template.class.php 第 188 行.
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead D:\WampServer2\www\pro\Tpcore\#CORE#\Library\Think\Template.class.php 第 188 行.
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead D:\WampServer2\www\pro\Tpcore\#CORE#\Library\Think\Template.class.php 第 188 行.
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead D:\WampServer2\www\pro\Tpcore\#CORE#\Library\Think\Template.class.php 第 188 行.
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead D:\WampServer2\www\pro\Tpcore\#CORE#\Library\Think\Template.class.php 第 188 行.
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead D:\WampServer2\www\pro\Tpcore\#CORE#\Library\Think\Template.class.php 第 188 行.
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead D:\WampServer2\www\pro\Tpcore\#CORE#\Library\Think\Template.class.php 第 188 行.
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead D:\WampServer2\www\pro\Tpcore\#CORE#\Library\Think\Template.class.php 第 188 行.
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000185s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000291s ]
+NOTIC: [8] Undefined variable: keyword D:\WampServer2\www\pro\WEBSITE\#CACHE#\Cache\Home\6542ee7a01beb447d60b9332de9118dd.php 第 36 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.044896s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.045018s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000542s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000644s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000862s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001072s ]
+
+[ 2015-09-06T18:02:59+08:00 ] ::1 /pro/public_html/index.php?m=Home&c=Index&a=index&versionid=1
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000047s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000926s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000767s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000915s ]
+SQL: SHOW COLUMNS FROM `sk_category` [ RunTime:0.0027s ]
+SQL: SELECT sk_category.id,`catename` FROM `sk_category` WHERE `pid` = 0 AND `versionid` = 1 ORDER BY id,sort asc  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `sk_category` WHERE `pid` = 1 AND `versionid` = 1 ORDER BY sort asc  [ RunTime:0.0005s ]
+SQL: SELECT * FROM `sk_category` WHERE `pid` = 2 AND `versionid` = 1 ORDER BY sort asc  [ RunTime:0.0006s ]
+SQL: SELECT * FROM `sk_category` WHERE `pid` = 3 AND `versionid` = 1 ORDER BY sort asc  [ RunTime:0.0010s ]
+SQL: SELECT * FROM `sk_category` WHERE `pid` = 4 AND `versionid` = 1 ORDER BY sort asc  [ RunTime:0.0006s ]
+SQL: SELECT * FROM `sk_category` WHERE `pid` = 5 AND `versionid` = 1 ORDER BY sort asc  [ RunTime:0.0004s ]
+SQL: SELECT * FROM `sk_category` WHERE `pid` = 6 AND `versionid` = 1 ORDER BY sort asc  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `sk_category` WHERE `pid` = 7 AND `versionid` = 1 ORDER BY sort asc  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `sk_category` WHERE `pid` = 8 AND `versionid` = 1 ORDER BY sort asc  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `sk_category` WHERE `pid` = 9 AND `versionid` = 1 ORDER BY sort asc  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `sk_config` [ RunTime:0.0037s ]
+SQL: SELECT `fieldvalue` FROM `sk_config` WHERE `title` = '网站关键字' AND `fieldname` = 'keyword' AND `versionid` = 1 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `fieldvalue` FROM `sk_config` WHERE `title` = '网站描述' AND `fieldname` = 'des' AND `versionid` = 1 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `sk_pics` [ RunTime:0.0032s ]
+SQL: SELECT * FROM `sk_pics` WHERE `title` LIKE '%logo%' AND `status` = 1 AND `versionid` = 1 ORDER BY id desc LIMIT 1   [ RunTime:0.0009s ]
+SQL: SHOW COLUMNS FROM `sk_shuffling` [ RunTime:0.0036s ]
+SQL: SELECT * FROM `sk_shuffling` WHERE `status` = 1 AND `versionid` = 1 ORDER BY createtime desc LIMIT 4   [ RunTime:0.0004s ]
+SQL: SELECT * FROM `sk_pics` WHERE `versionid` = 1 AND `status` = 1 AND `title` LIKE '%静%' ORDER BY id desc LIMIT 9   [ RunTime:0.0004s ]
+NOTIC: [8] Undefined index: pid D:\WampServer2\www\pro\WEBSITE\#WEB#\Home\Controller\CommonController.class.php 第 109 行.
+SQL: SELECT * FROM `sk_category` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `sk_category` WHERE ( pid=1 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `sk_article` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sk_article` WHERE ( cateid=10 ) ORDER BY sort desc LIMIT 1   [ RunTime:0.0006s ]
+SQL: SELECT `catename` FROM `sk_category` WHERE ( id=7 )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `sk_article` WHERE `status` = 1 AND `cateid` = 22 ORDER BY id desc,istop desc LIMIT 4   [ RunTime:0.0006s ]
+SQL: SELECT `catename` FROM `sk_category` WHERE `id` = 16 AND `versionid` = 1  [ RunTime:0.0009s ]
+SQL: SELECT * FROM `sk_article` WHERE `status` = 1 AND `versionid` = 1 AND `cateid` = 16 ORDER BY id desc,istop desc LIMIT 4   [ RunTime:0.0011s ]
+SQL: SELECT `catename` FROM `sk_category` WHERE `id` = 8 AND `versionid` = 1 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `sk_article` WHERE `cateid` = 23 AND `status` = 1 AND `versionid` = 1 ORDER BY id desc,istop desc LIMIT 6   [ RunTime:0.0005s ]
+SQL: SELECT `catename` FROM `sk_category` WHERE `id` = 2 AND `versionid` = 1 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `sk_article` WHERE `cateid` = 13 AND `status` = 1 AND `versionid` = 1 ORDER BY id desc,istop desc LIMIT 6   [ RunTime:0.0005s ]
+SQL: SELECT `catename` FROM `sk_category` WHERE `id` = 5 AND `versionid` = 1 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `sk_article` WHERE `cateid` = 19 AND `status` = 1 AND `versionid` = 1 ORDER BY id desc,istop desc LIMIT 6   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead D:\WampServer2\www\pro\Tpcore\#CORE#\Library\Think\Template.class.php 第 188 行.
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead D:\WampServer2\www\pro\Tpcore\#CORE#\Library\Think\Template.class.php 第 188 行.
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead D:\WampServer2\www\pro\Tpcore\#CORE#\Library\Think\Template.class.php 第 188 行.
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead D:\WampServer2\www\pro\Tpcore\#CORE#\Library\Think\Template.class.php 第 188 行.
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead D:\WampServer2\www\pro\Tpcore\#CORE#\Library\Think\Template.class.php 第 188 行.
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead D:\WampServer2\www\pro\Tpcore\#CORE#\Library\Think\Template.class.php 第 188 行.
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead D:\WampServer2\www\pro\Tpcore\#CORE#\Library\Think\Template.class.php 第 188 行.
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead D:\WampServer2\www\pro\Tpcore\#CORE#\Library\Think\Template.class.php 第 188 行.
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead D:\WampServer2\www\pro\Tpcore\#CORE#\Library\Think\Template.class.php 第 188 行.
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead D:\WampServer2\www\pro\Tpcore\#CORE#\Library\Think\Template.class.php 第 188 行.
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead D:\WampServer2\www\pro\Tpcore\#CORE#\Library\Think\Template.class.php 第 188 行.
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead D:\WampServer2\www\pro\Tpcore\#CORE#\Library\Think\Template.class.php 第 188 行.
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000280s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000395s ]
+NOTIC: [8] Undefined variable: keyword D:\WampServer2\www\pro\WEBSITE\#CACHE#\Cache\Home\6542ee7a01beb447d60b9332de9118dd.php 第 36 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.058246s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.058380s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000746s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000848s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000742s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000862s ]
+
+[ 2015-09-06T18:03:25+08:00 ] ::1 /pro/public_html/index.php?m=Home&c=Index&a=index&versionid=1
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000044s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000763s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000673s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000804s ]
+SQL: SHOW COLUMNS FROM `sk_category` [ RunTime:0.0040s ]
+SQL: SELECT sk_category.id,`catename` FROM `sk_category` WHERE `pid` = 0 AND `versionid` = 1 ORDER BY id,sort asc  [ RunTime:0.0006s ]
+SQL: SELECT * FROM `sk_category` WHERE `pid` = 1 AND `versionid` = 1 ORDER BY sort asc  [ RunTime:0.0005s ]
+SQL: SELECT * FROM `sk_category` WHERE `pid` = 2 AND `versionid` = 1 ORDER BY sort asc  [ RunTime:0.0005s ]
+SQL: SELECT * FROM `sk_category` WHERE `pid` = 3 AND `versionid` = 1 ORDER BY sort asc  [ RunTime:0.0004s ]
+SQL: SELECT * FROM `sk_category` WHERE `pid` = 4 AND `versionid` = 1 ORDER BY sort asc  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `sk_category` WHERE `pid` = 5 AND `versionid` = 1 ORDER BY sort asc  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `sk_category` WHERE `pid` = 6 AND `versionid` = 1 ORDER BY sort asc  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `sk_category` WHERE `pid` = 7 AND `versionid` = 1 ORDER BY sort asc  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `sk_category` WHERE `pid` = 8 AND `versionid` = 1 ORDER BY sort asc  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `sk_category` WHERE `pid` = 9 AND `versionid` = 1 ORDER BY sort asc  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `sk_config` [ RunTime:0.0037s ]
+SQL: SELECT `fieldvalue` FROM `sk_config` WHERE `title` = '网站关键字' AND `fieldname` = 'keyword' AND `versionid` = 1 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `fieldvalue` FROM `sk_config` WHERE `title` = '网站描述' AND `fieldname` = 'des' AND `versionid` = 1 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `sk_pics` [ RunTime:0.0029s ]
+SQL: SELECT * FROM `sk_pics` WHERE `title` LIKE '%logo%' AND `status` = 1 AND `versionid` = 1 ORDER BY id desc LIMIT 1   [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `sk_shuffling` [ RunTime:0.0037s ]
+SQL: SELECT * FROM `sk_shuffling` WHERE `status` = 1 AND `versionid` = 1 ORDER BY createtime desc LIMIT 4   [ RunTime:0.0004s ]
+SQL: SELECT * FROM `sk_pics` WHERE `versionid` = 1 AND `status` = 1 AND `title` LIKE '%静%' ORDER BY id desc LIMIT 9   [ RunTime:0.0004s ]
+NOTIC: [8] Undefined index: pid D:\WampServer2\www\pro\WEBSITE\#WEB#\Home\Controller\CommonController.class.php 第 109 行.
+SQL: SELECT * FROM `sk_category` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `sk_category` WHERE ( pid=1 ) LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `sk_article` [ RunTime:0.0034s ]
+SQL: SELECT * FROM `sk_article` WHERE ( cateid=10 ) ORDER BY sort desc LIMIT 1   [ RunTime:0.0007s ]
+SQL: SELECT `catename` FROM `sk_category` WHERE ( id=7 )  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `sk_article` WHERE `status` = 1 AND `cateid` = 22 ORDER BY id desc,istop desc LIMIT 4   [ RunTime:0.0006s ]
+SQL: SELECT `catename` FROM `sk_category` WHERE `id` = 16 AND `versionid` = 1  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `sk_article` WHERE `status` = 1 AND `versionid` = 1 AND `cateid` = 16 ORDER BY id desc,istop desc LIMIT 4   [ RunTime:0.0009s ]
+SQL: SELECT `catename` FROM `sk_category` WHERE `id` = 8 AND `versionid` = 1 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `sk_article` WHERE `cateid` = 23 AND `status` = 1 AND `versionid` = 1 ORDER BY id desc,istop desc LIMIT 6   [ RunTime:0.0010s ]
+SQL: SELECT `catename` FROM `sk_category` WHERE `id` = 2 AND `versionid` = 1 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `sk_article` WHERE `cateid` = 13 AND `status` = 1 AND `versionid` = 1 ORDER BY id desc,istop desc LIMIT 6   [ RunTime:0.0006s ]
+SQL: SELECT `catename` FROM `sk_category` WHERE `id` = 5 AND `versionid` = 1 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `sk_article` WHERE `cateid` = 19 AND `status` = 1 AND `versionid` = 1 ORDER BY id desc,istop desc LIMIT 6   [ RunTime:0.0005s ]
+INFO: [ view_parse ] --START--
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead D:\WampServer2\www\pro\Tpcore\#CORE#\Library\Think\Template.class.php 第 188 行.
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead D:\WampServer2\www\pro\Tpcore\#CORE#\Library\Think\Template.class.php 第 188 行.
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead D:\WampServer2\www\pro\Tpcore\#CORE#\Library\Think\Template.class.php 第 188 行.
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead D:\WampServer2\www\pro\Tpcore\#CORE#\Library\Think\Template.class.php 第 188 行.
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead D:\WampServer2\www\pro\Tpcore\#CORE#\Library\Think\Template.class.php 第 188 行.
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead D:\WampServer2\www\pro\Tpcore\#CORE#\Library\Think\Template.class.php 第 188 行.
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead D:\WampServer2\www\pro\Tpcore\#CORE#\Library\Think\Template.class.php 第 188 行.
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead D:\WampServer2\www\pro\Tpcore\#CORE#\Library\Think\Template.class.php 第 188 行.
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead D:\WampServer2\www\pro\Tpcore\#CORE#\Library\Think\Template.class.php 第 188 行.
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead D:\WampServer2\www\pro\Tpcore\#CORE#\Library\Think\Template.class.php 第 188 行.
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead D:\WampServer2\www\pro\Tpcore\#CORE#\Library\Think\Template.class.php 第 188 行.
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead D:\WampServer2\www\pro\Tpcore\#CORE#\Library\Think\Template.class.php 第 188 行.
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000253s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000363s ]
+NOTIC: [8] Undefined variable: keyword D:\WampServer2\www\pro\WEBSITE\#CACHE#\Cache\Home\6542ee7a01beb447d60b9332de9118dd.php 第 36 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.049169s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.049298s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000478s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000578s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000872s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001025s ]
+
+[ 2015-09-06T18:03:38+08:00 ] ::1 /pro/public_html/index.php?m=Home&c=Index&a=index&versionid=1
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000027s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000484s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000676s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000835s ]
+SQL: SHOW COLUMNS FROM `sk_category` [ RunTime:0.0038s ]
+SQL: SELECT sk_category.id,`catename` FROM `sk_category` WHERE `pid` = 0 AND `versionid` = 1 ORDER BY id,sort asc  [ RunTime:0.0004s ]
+SQL: SELECT * FROM `sk_category` WHERE `pid` = 1 AND `versionid` = 1 ORDER BY sort asc  [ RunTime:0.0004s ]
+SQL: SELECT * FROM `sk_category` WHERE `pid` = 2 AND `versionid` = 1 ORDER BY sort asc  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `sk_category` WHERE `pid` = 3 AND `versionid` = 1 ORDER BY sort asc  [ RunTime:0.0005s ]
+SQL: SELECT * FROM `sk_category` WHERE `pid` = 4 AND `versionid` = 1 ORDER BY sort asc  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `sk_category` WHERE `pid` = 5 AND `versionid` = 1 ORDER BY sort asc  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `sk_category` WHERE `pid` = 6 AND `versionid` = 1 ORDER BY sort asc  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `sk_category` WHERE `pid` = 7 AND `versionid` = 1 ORDER BY sort asc  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `sk_category` WHERE `pid` = 8 AND `versionid` = 1 ORDER BY sort asc  [ RunTime:0.0004s ]
+SQL: SELECT * FROM `sk_category` WHERE `pid` = 9 AND `versionid` = 1 ORDER BY sort asc  [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `sk_config` [ RunTime:0.0047s ]
+SQL: SELECT `fieldvalue` FROM `sk_config` WHERE `title` = '网站关键字' AND `fieldname` = 'keyword' AND `versionid` = 1 LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT `fieldvalue` FROM `sk_config` WHERE `title` = '网站描述' AND `fieldname` = 'des' AND `versionid` = 1 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sk_pics` [ RunTime:0.0058s ]
+SQL: SELECT * FROM `sk_pics` WHERE `title` LIKE '%logo%' AND `status` = 1 AND `versionid` = 1 ORDER BY id desc LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sk_shuffling` [ RunTime:0.0037s ]
+SQL: SELECT * FROM `sk_shuffling` WHERE `status` = 1 AND `versionid` = 1 ORDER BY createtime desc LIMIT 4   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `sk_pics` WHERE `versionid` = 1 AND `status` = 1 AND `title` LIKE '%静%' ORDER BY id desc LIMIT 9   [ RunTime:0.0007s ]
+NOTIC: [8] Undefined index: pid D:\WampServer2\www\pro\WEBSITE\#WEB#\Home\Controller\CommonController.class.php 第 109 行.
+SQL: SELECT * FROM `sk_category` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0015s ]
+SQL: SELECT * FROM `sk_category` WHERE ( pid=1 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `sk_article` [ RunTime:0.0044s ]
+SQL: SELECT * FROM `sk_article` WHERE ( cateid=10 ) ORDER BY sort desc LIMIT 1   [ RunTime:0.0007s ]
+SQL: SELECT `catename` FROM `sk_category` WHERE ( id=7 )  [ RunTime:0.0003s ]
+SQL: SELECT * FROM `sk_article` WHERE `status` = 1 AND `cateid` = 22 ORDER BY id desc,istop desc LIMIT 4   [ RunTime:0.0006s ]
+SQL: SELECT `catename` FROM `sk_category` WHERE `id` = 16 AND `versionid` = 1  [ RunTime:0.0002s ]
+SQL: SELECT * FROM `sk_article` WHERE `status` = 1 AND `versionid` = 1 AND `cateid` = 16 ORDER BY id desc,istop desc LIMIT 4   [ RunTime:0.0006s ]
+SQL: SELECT `catename` FROM `sk_category` WHERE `id` = 8 AND `versionid` = 1 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `sk_article` WHERE `cateid` = 23 AND `status` = 1 AND `versionid` = 1 ORDER BY id desc,istop desc LIMIT 6   [ RunTime:0.0014s ]
+SQL: SELECT `catename` FROM `sk_category` WHERE `id` = 2 AND `versionid` = 1 LIMIT 1   [ RunTime:0.0006s ]
+SQL: SELECT * FROM `sk_article` WHERE `cateid` = 13 AND `status` = 1 AND `versionid` = 1 ORDER BY id desc,istop desc LIMIT 6   [ RunTime:0.0014s ]
+SQL: SELECT `catename` FROM `sk_category` WHERE `id` = 5 AND `versionid` = 1 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `sk_article` WHERE `cateid` = 19 AND `status` = 1 AND `versionid` = 1 ORDER BY id desc,istop desc LIMIT 6   [ RunTime:0.0006s ]
+INFO: [ view_parse ] --START--
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead D:\WampServer2\www\pro\Tpcore\#CORE#\Library\Think\Template.class.php 第 188 行.
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead D:\WampServer2\www\pro\Tpcore\#CORE#\Library\Think\Template.class.php 第 188 行.
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead D:\WampServer2\www\pro\Tpcore\#CORE#\Library\Think\Template.class.php 第 188 行.
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead D:\WampServer2\www\pro\Tpcore\#CORE#\Library\Think\Template.class.php 第 188 行.
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead D:\WampServer2\www\pro\Tpcore\#CORE#\Library\Think\Template.class.php 第 188 行.
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead D:\WampServer2\www\pro\Tpcore\#CORE#\Library\Think\Template.class.php 第 188 行.
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead D:\WampServer2\www\pro\Tpcore\#CORE#\Library\Think\Template.class.php 第 188 行.
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead D:\WampServer2\www\pro\Tpcore\#CORE#\Library\Think\Template.class.php 第 188 行.
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead D:\WampServer2\www\pro\Tpcore\#CORE#\Library\Think\Template.class.php 第 188 行.
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead D:\WampServer2\www\pro\Tpcore\#CORE#\Library\Think\Template.class.php 第 188 行.
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead D:\WampServer2\www\pro\Tpcore\#CORE#\Library\Think\Template.class.php 第 188 行.
+NOTIC: [8192] preg_replace(): The /e modifier is deprecated, use preg_replace_callback instead D:\WampServer2\www\pro\Tpcore\#CORE#\Library\Think\Template.class.php 第 188 行.
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000233s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000355s ]
+NOTIC: [8] Undefined variable: keyword D:\WampServer2\www\pro\WEBSITE\#CACHE#\Cache\Home\6542ee7a01beb447d60b9332de9118dd.php 第 36 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.074227s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.074449s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.002932s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.003145s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001423s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002097s ]
+

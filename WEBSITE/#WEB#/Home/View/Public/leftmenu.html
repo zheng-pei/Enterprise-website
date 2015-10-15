@@ -1,0 +1,14 @@
+ <!-- 显示正上方栏目的列表 -->
+<div class="content">
+   <div class="news width_1100">
+       <div class="controls">
+        <if condition="$pid eq $cateid"> 
+          <volist name="subcolumn" id="vo">
+          <a href="{sk::U('Article/lists',array('pid'=>$pid,'cateid'=>$vo['id'],'versionid'=>$versionid))}" <if condition="$i eq 1">class="cur"</if>>{sk:$vo.catename}</a>
+          </volist>
+      <elseif condition="$pid neq $cateid"/>
+         <volist name="subcolumn" id="vo">
+        <a href="{sk::U('Article/lists',array('pid'=>$pid,'cateid'=>$vo['id'],'versionid'=>$versionid))}" <if condition="$vo['id'] eq $cateid">class="cur"</if>>{sk:$vo.catename}</a>
+          </volist>
+       </if>    
+       </div>

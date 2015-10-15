@@ -1,0 +1,22 @@
+  <!--科研成果近期项目,开放课题设置列表-->
+   <div class="ky_program mrt30">
+     <ul class="pr_list clearfix">
+        <volist name="lists" id="vo">
+       <li>
+         <i class="quare"></i>
+         <div class="pr_list_right">
+         <h3><a href="{sk::U('News/news',array('pid'=>$pid,'cateid'=>$cateid,'versionid'=>$versionid,'id'=>$vo['id']))}"  class="fs18 fonth" title="{sk:$vo.title}"><font color="{sk:$vo.color}" class="abc">{sk:$vo.title}</font></a></h3>
+           <if condition="$vo['subtitle'] neq ''">
+           <p class="color84 list clearfix">{sk:$vo.subtitle|msubstr=0,90}</p>
+          </if>
+           <hr />
+           <p class="con">{sk:$vo.content|htmlspecialchars_decode|strip_tags|msubstr=0,500}</p>
+           <a href="{sk::U('News/news',array('pid'=>$pid,'cateid'=>$cateid,'versionid'=>$versionid,'id'=>$vo['id']))}" class="color_blue xq"><if condition="$versionid eq 1">点击查看详情<else/>Click to view the details</if>>></a>
+         </div>
+       </li>
+     </volist>
+     </ul>
+      <span class="guidelist">{sk:$page}</span>
+    </div>     
+   </div> 
+  </div>

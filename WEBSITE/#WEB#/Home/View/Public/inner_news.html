@@ -1,0 +1,55 @@
+<!-- 文章内容页 -->
+<div class="jianjie mrt30">
+       <!--实验室简介-->
+       <div class="jcon">
+       		<!-- 文章标题 -->
+				<if condition="$article.isstrong eq 1">
+					<div class="bt"><strong><font color="{sk:$article.color}">{sk:$article.title}</font></strong></div>
+				<else/>
+				<div class="bt"><font color="{sk:$article.color}">{sk:$article.title}</font></div></if>
+				<!-- 显示子标题 -->
+				<if condition="$article.subtitle neq ''">
+					<p class="bt">{sk:$article.subtitle}</p>
+				</if>
+				<center><p style="color:#666;padding-top:10px;padding-bottom:25px;">&nbsp;&nbsp;时间：{sk:$article.createtime|date="Y-m-d",###}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;来源: {sk:$article.source}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;浏览量:{sk:$article.hits}次</p></center>
+				         	
+				         	<if condition="$columnmodel eq 1">
+						<!-- 文字的内容 -->
+								{sk:$article.content|htmlspecialchars_decode}
+							<elseif condition="$columnmodel eq 2"/>
+						<!-- 图文的内容 -->
+								{sk:$article.content|htmlspecialchars_decode}
+							<elseif condition="$columnmodel eq 3"/>
+						<!-- 图片集的内容 -->
+							<volist name="pics" id="vo">
+								<ul >
+									<li class="so">
+										<center>
+										<img  height="200px;" src="{sk:$vo[0]}" title="{sk:$vo[1]}"/><br/>
+										<!-- 图片标题： -->{sk:$vo[1]}<br/><br/>
+										<!-- 图片描述： -->{sk:$vo[2]}
+										</center>
+									</li>
+								</ul>
+							</volist>
+						</if>
+      </div>
+    </div>
+     <div class="news_list">
+         <ul>
+         <!-- 先判断是否存在上一篇或下一篇 -->
+         	<if condition="($prev neq 0)"> 
+         	<li>上一篇：<a href="{sk::U('News/news',array('pid'=>$pid,'cateid'=>$cateid,'versionid'=>$versionid,'id'=>$prev))}"><font color="{sk:$prev_color}">{sk:$prev_title}</font></a></li>
+           	<else/>
+           	<li>上一篇： 没有了</li>
+           </if>
+			<if condition="($next neq 0)"> 
+				<li>下一篇：<a href="{sk::U('News/news',array('pid'=>$pid,'cateid'=>$cateid,'versionid'=>$versionid,'id'=>$next))}"><font color="{sk:$next_color}">{sk:$next_title}</font></a>
+          		 </li>
+          		<else/>
+          		 	<li>下一篇： 没有了</li>
+      		</if>
+         </ul>
+       </div>
+   </div> 
+  </div>

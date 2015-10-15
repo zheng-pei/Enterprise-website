@@ -1,0 +1,20 @@
+<!-- 新闻列表 -->
+   <div class="jiaoliu mrt30">
+         <ul class="jl_list">
+          <volist name="lists" id="vo">
+            <li>
+            <div class="jl_list_left fr"><img src="{sk:$vo.pic}"/></div>
+            <div class="jl_list_right">
+               <h3>
+                  <a href="{sk::U('News/news',array('pid'=>$pid,'cateid'=>$cateid,'versionid'=>$versionid,'id'=>$vo['id']))}" class="fs18 ells" title="{sk:$vo.title}"><font color="{sk:$vo.color}" class="abc">{sk:$vo.title}</font></a></span><b class="fr">{sk:$vo.createtime|date="Y/m/d",###}</b>
+               </h3>
+               {sk:$vo.content|htmlspecialchars_decode|strip_tags|msubstr=0,360}
+               <a class="color_blue xq" href="{sk::U('News/news',array('pid'=>$pid,'cateid'=>$cateid,'versionid'=>$versionid,'id'=>$vo['id']))}"><if condition="$versionid eq 1">点击展开阅读<else/>Click to view the details</if>>></a>
+             </div>
+            </li>
+          </volist>
+         </ul>
+          <span class="guidelist">{sk:$page}</span>
+    </div>
+   </div> 
+  </div>

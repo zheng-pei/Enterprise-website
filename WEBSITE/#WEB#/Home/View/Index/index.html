@@ -1,0 +1,187 @@
+<include file="Public:header"/>
+ <!--active banner-->
+<include file="Public:lunbo"/>
+  <!--content-->
+   <div class="content">
+  <div class="gaikuang">
+     <div class="c_box width_1100">
+      <div class="c_img">
+       <img src="{sk:$labinfo.pic}" />
+      </div>
+      <div class="c_txt">
+      <div class="c_head"><img src="__IMG__/arrow03.png" /><h2 class="c_h2">{sk:$lab.catename}</h2></div>
+      <hr/>
+      <p>{sk:$labinfo.content|htmlspecialchars_decode|strip_tags|msubstr=0,300}.... <a href="{sk::U('Article/lists',array('pid'=>$lab['id'],'cateid'=>$lab['id'],'versionid'=>$versionid))}"><if condition="$versionid eq 1">详细<else/>Details</if>>></a></p>
+      </div>
+     </div>
+   </div>
+
+  <div class="team">
+       <div class="teambox width_1100">
+         <div class="boxcon">
+           <a class="cur">{sk:$teamname}</a>
+           <a>{sk:$prize}</a>
+         </div>
+         <!--团队-->
+         <div class="teamlist" style="display:block">
+           <ul>
+            <volist name="teamlists" id="vo">
+            <li>
+              <a href="{sk::U('News/news',array('pid'=>$teampid,'cateid'=>$teamcateid,'versionid'=>$versionid,'id'=>$vo['id']))}"
+              title="{sk:$vo['title']}">
+            <div class="team_li">
+              <i><img src="{sk:$vo.pic}" /></i>
+              <strong >{sk:$vo.title}</strong>
+              <p>{sk:$vo.subtitle}</p>
+              <b class="t_ck">ENTER</b>
+             </div>
+             </a>
+            </li>
+            </volist>
+           </ul>
+         </div><!--end-->
+         <!--奖励-->
+         <div class="teamlist">
+           <ul>
+              <volist name="prizelists" id="vo">
+            <li>
+              <a href="{sk::U('News/news',array('pid'=>$prizepid,'cateid'=>$prizecateid,'versionid'=>$versionid,'id'=>$vo['id']))}"
+              title="{sk:$vo['title']}" title="{sk:$vo['title']}">
+            <div class="team_li">
+              <i><img src="{sk:$vo.pic}" /></i>
+              <strong >{sk:$vo.title}</strong>
+              <p>{sk:$vo.subtitle}</p>
+              <b class="t_ck">ENTER</b>
+             </div>
+             </a>
+            </li>
+          </volist>
+           </ul>
+         </div><!--end-->
+       </div>
+    </div>
+
+    <div class="news width_1100">
+       <div class="controls" id="controls">
+         <a class="cur">{sk:$newsname}</a>
+         <a>{sk:$proname}</a>
+         <a>{sk:$openname}</a>
+       </div>
+       <div class="newscons">
+       <!--新闻中心-->
+       <div class="newscon" style="display:block">
+          <div class="con_left" id="news_con" >
+          <volist name="newsleft" id="vo">
+          <div class="con_left_t" <if condition="$i eq 1">style="display:block"</if>>
+             <a href="{sk::U('News/news',array('pid'=>$newspid,'cateid'=>$newscateid,'versionid'=>$versionid,'id'=>$vo['id']))}" title="{sk:$vo['title']}">
+             <i style="background:url({sk:$vo.pic}) no-repeat"></i>
+             <h3>{sk:$vo.title}</h3>
+             <p>{sk:$vo.content|htmlspecialchars_decode|strip_tags|msubstr=0,60}</p>
+             </a>
+            </div>
+          </volist>
+            <span class="conguide">
+              <a href="javascript:;" class="cur"></a>
+              <a href="javascript:;"></a>
+              <a href="javascript:;"></a>
+            </span>
+          </div>
+          <div class="con_right">
+             <ul>
+             <volist name="newsright" id="vo1">
+               <li>
+               <a href="{sk::U('Article/lists',array('pid'=>$newspid,'cateid'=>$newscateid,'versionid'=>$versionid,'id'=>$vo1['id']))}" title="{sk:$vo1['title']}">
+                 <div class="con_r_left">
+                   <strong>{sk:$vo1.createtime|date="d",###}</strong>
+                   <b>{sk:$vo1.createtime|date="Y-m",###}</b>
+                 </div>
+                 <div class="con_r_right">
+                    <h4>{sk:$vo1.title}</h4>
+                    <p>{sk:$vo1.content|htmlspecialchars_decode|strip_tags|msubstr=0,60}</p>
+                 </div></a>
+               </li>
+             </volist>
+             </ul>
+          </div>
+          <a class="more" href="{sk::U('Article/lists',array('pid'=>$newspid,'cateid'=>$newscateid,'versionid'=>$versionid))}"><if condition="$versionid eq 1">查看更多<else/>See more</if></a>
+       </div>
+         <!--项目-->
+         <div class="newscon">
+          <div class="con_left" id="news_con2" >
+          <volist name="proleft" id="vo">
+          <div class="con_left_t" <if condition="$i eq 1">style="display:block"</if>>
+             <a href="{sk::U('News/news',array('pid'=>$propid,'cateid'=>$procateid,'versionid'=>$versionid,'id'=>$vo['id']))}" title="{sk:$vo['title']}">
+             <i style="background:url({sk:$vo.pic}) no-repeat"></i>
+             <h3>{sk:$vo.title}</h3>
+             <p>{sk:$vo.content|htmlspecialchars_decode|strip_tags|msubstr=0,60}</p>
+             </a>
+            </div>
+          </volist>
+            <span class="conguide">
+              <a href="javascript:;" class="cur"></a>
+              <a href="javascript:;"></a>
+              <a href="javascript:;"></a>
+            </span>
+          </div>
+          <div class="con_right">
+             <ul>
+             <volist name="proright" id="vo1">
+               <li>
+               <a href="{sk::U('News/news',array('pid'=>$propid,'cateid'=>$procateid,'versionid'=>$versionid,'id'=>$vo1['id']))}" title="{sk:$vo1['title']}">
+                 <div class="con_r_left">
+                   <strong>{sk:$vo1.createtime|date="d",###}</strong>
+                   <b>{sk:$vo1.createtime|date="Y-m",###}</b>
+                 </div>
+                 <div class="con_r_right">
+                    <h4>{sk:$vo1.title}</h4>
+                    <p>{sk:$vo1.content|htmlspecialchars_decode|strip_tags|msubstr=0,60}</p>
+                 </div></a>
+               </li>
+             </volist>
+             </ul>
+          </div>
+          <a class="more" href="{sk::U('Article/lists',array('pid'=>$propid,'cateid'=>$procateid,'versionid'=>$versionid))}"><if condition="$versionid eq 1">查看更多<else/>See more</if></a>
+       </div>
+        <!--开放和交流-->
+       <div class="newscon">
+           <div class="con_left" id="news_con3">
+           <volist name="openleft" id="vo2">
+            <div class="con_left_t" <if condition="$i eq 1">style="display:block"</if>>
+            <a href="{sk::U('News/news',array('pid'=>$openpid,'cateid'=>$opencateid,'versionid'=>$versionid,'id'=>$vo2['id']))}" title="{sk:$vo2['title']}">
+             <i style="background:url({sk:$vo2['pic']}) no-repeat"></i>
+             <h3>{sk:$vo2.title}</h3>
+             <p>{sk:$vo2.content|htmlspecialchars_decode|strip_tags|msubstr=0,60}...</p>
+             </a>
+            </div>
+          </volist>
+            <span class="conguide">
+              <a href="javascript:;" class="cur"></a>
+              <a href="javascript:;"></a>
+              <a href="javascript:;"></a>
+            </span>
+          </div>
+          <!-- 开放和交流右边的内容 -->
+          <div class="con_right">
+             <ul>
+             <volist name="openright" id="vo3">
+               <li>
+               <a href="{sk::U('News/news',array('pid'=>$openpid,'cateid'=>$opencateid,'versionid'=>$versionid,'id'=>$vo3['id']))}" title="{sk:$vo3['title']}">
+                 <div class="con_r_left">
+                 <!-- 显示时间 -->
+                   <strong>{sk:$vo3.createtime|date="d",###}</strong>
+                   <b>{sk:$vo3.createtime|date="Y-m",###}</b>
+                 </div>
+                 <div class="con_r_right">
+                    <h4>{sk:$vo3.title}</h4>
+                    <p>{sk:$vo3.content|htmlspecialchars_decode|strip_tags|msubstr=0,60}...</p>
+                 </div></a>
+               </li>
+             </volist> 
+             </ul>
+          </div>
+          <a class="more" href="{sk::U('Article/lists',array('pid'=>$openpid,'cateid'=>$opencateid,'versionid'=>$versionid))}"><if condition="$versionid eq 1">查看更多<else/>See more</if></a>
+       </div>
+      </div>
+    </div>  
+  </div>
+<include file="Public:footer"/>

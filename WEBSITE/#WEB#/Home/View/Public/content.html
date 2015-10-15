@@ -1,0 +1,33 @@
+<!-- 通用的内容页 -->
+<include file="Public:header"/>
+<include file="Public:static_pic"/>
+<include file="Public:leftmenu"/>
+<!-- 文章内容页 -->
+<div class="jianjie mrt30">
+       <!--实验室简介-->
+       <div class="jcon">
+         	<if condition="$columnmodel eq 1">
+		<!-- 文字的内容 -->
+				{sk:$content|htmlspecialchars_decode}
+			<elseif condition="$columnmodel eq 2"/>
+		<!-- 图文的内容 -->
+				{sk:$content|htmlspecialchars_decode}
+			<elseif condition="$columnmodel eq 3"/>
+		<!-- 图片集的内容 -->
+			<volist name="pics" id="vo">
+				<ul >
+					<li class="so">
+						<center>
+						<img  height="200px;" src="{sk:$vo[0]}" title="{sk:$vo[1]}"/><br/>
+						<!-- 图片标题： -->{sk:$vo[1]}<br/><br/>
+						<!-- 图片描述： -->{sk:$vo[2]}
+						</center>
+					</li>
+				</ul>
+			</volist>
+		</if>
+      </div>
+    </div>
+   </div> 
+  </div>
+  <include file="Public:footer"/>

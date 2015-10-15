@@ -1,0 +1,29 @@
+<!-- 通用的内容页 -->
+<include file="Public:header"/>
+<include file="Public:static_pic"/>
+<!-- 文章的搜索内容页 -->
+<div class="sobox  width_1100">
+<p class="line">
+<if condition="$versionid eq 1">
+以下是关键字 "<font color="red">{sk:$keyword}</font>" 在分类中的搜索结果
+<else/>
+The following is the key "<font color="red">{sk:$keyword}</font>" Search results in classification
+</if>
+</p>
+		<!-- 当你搜索的结果为0的时候，代表你没有找到相关内容 -->
+		<if condition="($res eq 0)">
+		<p class="sop"><if condition="$versionid eq 1">搜索结果为空, 没有找到相关的内容<else/>Search results are empty, no relevant content is found.</if></p>
+		<else/>
+		<div class="so_list">
+		<ul>
+		    <volist name="res" id="vo">
+			   <li> 
+			    	<a href="{sk::U('News/news',array('pid'=>$vo['pid'],'cateid'=>$vo['cateid'],'versionid'=>$versionid,'id'=>$vo['id']))}">{sk:$vo.title}</a>
+			  </li>
+			</volist>
+			</ul>
+		</div>  
+	</if>
+	<span class="guidelist">{sk:$page}</span>
+</div>
+<include file="Public:footer"/>

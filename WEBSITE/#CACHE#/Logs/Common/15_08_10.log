@@ -1,0 +1,6 @@
+[ 2015-08-10T20:01:44+08:00 ] ::1 /pro/public_html/index.php?m=System&c=Friendlink&a=index&versionid=1&showtype=2&keyword=&m=flink&search=%E6%90%9C%E7%B4%A2&p=2
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000025s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000591s ]
+ERR: 无法加载模块:Flink
+

@@ -1,0 +1,241 @@
+DELIMITER $$
+DROP FUNCTION IF EXISTS `fun_distance`$$
+
+CREATE FUNCTION `fun_distance`(lat1 float,lng1 float,lat2 float,lng2 float) RETURNS float
+BEGIN
+set @num=2 * 6378.137*ASIN(SQRT(POW(SIN(PI()*(lat1–(lat2))/360),2)+ COS(PI()*lat1/180)*COS(lat2*PI()/180)*POW(SIN(PI()*(lng1–(lng2))/360),2)));
+RETURN @num;
+END$$
+
+DELIMITER ;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CREATE DEFINER=`root`@`localhost` FUNCTION `distance`(lat1 float,lng1 float,lat2 float,lng2 float) RETURNS float
+BEGIN
+
+set @num=
+2 * 6378.137* ASIN(SQRT(POW(SIN(PI() * (lat1 – lat2) / 360), 2) + COS(PI() * lat1 / 180)
+* COS(lat2* PI() / 180) * POW(SIN(PI() * (lng1 – lng2) / 360), 2)));
+RETURN @num;
+END
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+google地图提供的方法（PHP版本） 
+class Distance{
+const EARTH_RADIUS = 6378.137; // earth radius (const) kilometer
+
+  /**
+   *
+   *	Example:
+   *		$precision = 49;
+   *		ini_set("precision", $precision);
+   *		echo pi(); //will output 3.141592653589793115997963468544185161590576171875
+   *
+   *		1 kilometer = 0.621371192 mile
+   *
+   *	@param double d
+   *	@return double data
+   */
+  private function rad( $d )
+  {
+    return $d * M_PI / 180.0;
+  }
+
+  /**
+   *
+   *	Example : get_distance(44.2112,-88.4175,34.5082,-82.6498)
+   *	Get Distance between two point : longitude,latitude(lat1,lng1 => lat2,lng2 )
+   *
+   *	@param double d
+   *	@return double data
+   *
+   */
+  public function get_distance( $lat1, $lng1, $lat2, $lng2, $base = 1000 )
+  {
+    $radLat1 = floatval( $this->rad($lat1) );
+    $radLat2 = floatval( $this->rad($lat2) );
+    $a = $radLat1 - $radLat2;
+    $b = $this->rad($lng1) - $this->rad($lng2);
+
+    $s = 2 * asin(sqrt(pow(sin($a/2),2) + cos($radLat1) * cos($radLat2) * pow(sin($b/2),2)));
+
+    $s = $s * self::EARTH_RADIUS;
+    $s = round($s * 10000) / 10000;
+
+    return $s;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+mysql计算两GPS坐标的距离函数：
+
+PHP计算两个GPS点之间的距离
+Mysql计算两GPS坐标的距离
+javascript计算两个GPS点之间的距离
+
+
+drop function getDistance;
+DELIMITER $$  
+CREATE DEFINER=`root`@`localhost` FUNCTION `getDistance`(
+     lon1 float(10,7) 
+    ,lat1 float(10,7)
+    ,lon2 float(10,7) 
+    ,lat2 float(10,7)
+) RETURNS double
+begin
+    declare d double;
+    declare radius int;
+    set radius = 6378140; #假设地球为正球形，直径为6378140米
+    set d = (2*ATAN2(SQRT(SIN((lat1-lat2)*PI()/180/2)   
+        *SIN((lat1-lat2)*PI()/180/2)+   
+        COS(lat2*PI()/180)*COS(lat1*PI()/180)   
+        *SIN((lon1-lon2)*PI()/180/2)   
+        *SIN((lon1-lon2)*PI()/180/2)),   
+        SQRT(1-SIN((lat1-lat2)*PI()/180/2)   
+        *SIN((lat1-lat2)*PI()/180/2)   
+        +COS(lat2*PI()/180)*COS(lat1*PI()/180)   
+        *SIN((lon1-lon2)*PI()/180/2)   
+        *SIN((lon1-lon2)*PI()/180/2))))*radius;
+    return d;
+end
+$$
+DELIMITER ; 
+select getDistance(116.3899,39.91578,116.3904,39.91576); #调用函数
+Mysql计算两GPS坐标的距离SQL语句：
+
+
+#lat为纬度, lng为经度, 一定不要弄错
+declare @lon1 float;
+declare @lat1 float;
+declare @lon2 float;
+declare @lat2 float;
+set @lon1=116.3899;
+set @lat1=39.91578;
+set @lon2=116.3904;
+set @lat2=39.91576;  
+select (2*ATAN2(SQRT(SIN((@lat1-@lat2)*PI()/180/2)   
+        *SIN((@lat1-@lat2)*PI()/180/2)+   
+        COS(@lat2*PI()/180)*COS(@lat1*PI()/180)   
+        *SIN((@lon1-@lon2)*PI()/180/2)   
+        *SIN((@lon1-@lon2)*PI()/180/2)),   
+        SQRT(1-SIN((@lat1-@lat2)*PI()/180/2)   
+        *SIN((@lat1-@lat2)*PI()/180/2)   
+        +COS(@lat2*PI()/180)*COS(@lat1*PI()/180)   
+        *SIN((@lon1-@lon2)*PI()/180/2)   
+        *SIN((@lon1-@lon2)*PI()/180/2))))*6378140;
+更多关于GPS计算请参考：http://www.movable-type.co.uk/scripts/latlong.html
+错误及解决方法：
+在创建函数前报如下错误：
+
+1
+This function has none of DETERMINISTIC, NO SQL, or READS SQL DATA in its declaration and binary logging is enabled (you *might* want to use the less safe log_bin_trust_function_creators variable)
+解决方法：
+在创建函数前执行下面SQL语句：
+
+1
+set global log_bin_trust_function_creators=1;
+或者修改my.cnf文件并重启mysqld服务：
+
+1
+log_bin_trust_function_creators=1
+分类: 数据库

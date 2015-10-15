@@ -1,0 +1,162 @@
+<include file="Public:header" />
+<div id="main">
+  <div class="container-fluid">
+    <div class="row-fluid">
+      <div class="span12">
+        <div class="box">
+          <div class="box-title">
+            <div class="span10">
+              <h3><i class="icon-plus"></i>编辑管理角色</h3>
+            </div>
+            <div class="span2"><a class="btn" href="Javascript:history.back();">返回</a></div>
+          </div>
+          <div class="box-content">
+          <form action="{sk::U('Role/update')}" method="post" id="form1" name="form1" class="form-horizontal form-validate">
+          <input type="hidden" name="id" value="{sk:$vo.id}"/>
+          	  <div class="control-group">
+                <label for="rolename" class="control-label">角色名称：</label>
+                <div class="controls">
+                  <input type="text" name="rolename" id="rolename" class="input-large" data-rule-required="true" data-rule-maxlength="20" value="{sk:$vo.rolename}" />
+                  <span class="maroon">*</span> <span class="help-inline"></span> </div>
+              </div>
+              <div class="control-group">
+                <label for="remark" class="control-label">备注：</label>
+                <div class="controls">
+                  <input type="text" name="remark" id="remark" class="input-xlarge" value="{sk:$vo.remark}" />
+                   <span class="help-inline"></span> </div>
+              </div>
+              <div class="control-group">
+                <label for="node" class="control-label">权限设置：</label>
+                  <div class="controls">
+  
+                 <!-- 其他的菜单 -->
+                   <volist name="list" id="vonode">
+                    <legend style="margin-top:20px;"> <input type="checkbox" name="node[]" value="{sk:$vonode.id}" class="group0" />{sk:$vonode.title}</legend>
+                        <volist name="vonode['subnode']" id="vo">
+                        <label class="checkbox inline">
+                        <input type="checkbox" value="{sk:$vo.id}" name="node[]" data-pid="{sk:$vonode.id}" class="group1" <if condition="in_array($vo['id'],$selnodes)">checked="checked"</if> />{sk:$vo.title}
+                        </label>
+                      </volist>
+                   </volist>
+                   <!-- 内容管理菜单 -->
+                     <legend style="margin-top:20px;"><input type="checkbox" name="content" value="{sk:$content.id}" class="group0" />{sk:$content.title}</legend>
+                    <volist name="columnlist" id="vo1">
+                    <label class="checkbox inline">
+                       <input type="checkbox"  data-pid="{sk:$content.id}" value="{sk:$vo1.id}" name="pid_column[]" class="group1" <if condition="in_array($vo1['id'],$selcate)">checked="checked"</if> />{sk:$vo1.catename}[{sk:$versionlist[$vo1['versionid']]}]
+                       </label>
+                    </volist>
+                  </div>
+              </div>
+             <div class="form-actions">
+                <button id="bsubmit" type="submit" data-loading-text="提交中..." class="btn btn-primary">保存</button>
+                <a class="btn" href="javascript:history.back();">取消</a> 
+             </div>
+          </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){
+	$(".group0").each(function(){
+		var pid=$(this).val()
+		var l=$(".group1[data-pid='"+pid+"']").length;
+		var i=0;
+		$(".group1[data-pid='"+pid+"']").each(function(){
+			if($(this).attr('checked')){
+				i++;	
+			}else{
+				return false; 
+			}	
+		});
+		if(i==l){
+			$(".group0[value='"+pid+"']").attr("checked",true);	
+		}else{
+			$(".group0[value='"+pid+"']").attr("checked",false);	
+		}
+	});
+	$(".group0").click(function(){
+		var pid=$(this).val();
+		if($(this).attr('checked')){
+			$(".group1[data-pid='"+pid+"']").attr("checked",true);
+		}else{
+			$(".group1[data-pid='"+pid+"']").attr("checked",false);
+		}	
+	});
+	$(".group1").click(function(){
+		var pid=$(this).attr("data-pid");	
+		var l=$(".group1[data-pid='"+pid+"']").length;
+		var i=0;
+		$(".group1[data-pid='"+pid+"']").each(function(){
+			if($(this).attr('checked')){
+				i++;	
+			}else{
+				return false; 
+			}	
+		});
+		if(i==l){
+			$(".group0[value='"+pid+"']").attr("checked",true);	
+		}else{
+			$(".group0[value='"+pid+"']").attr("checked",false);	
+		}
+	});
+	
+  $(".group3").click(function(){
+    var pid=$(this).val();
+    if($(this).attr('checked')){
+      $(".group4[data-pid='"+pid+"']").attr("checked",true);
+    }else{
+      $(".group4[data-pid='"+pid+"']").attr("checked",false);
+    } 
+	var pid2=$(this).attr("data-pid");
+	var l=$(".group3[data-pid='"+pid2+"']").length;
+    var i=0;
+	$(".group3[data-pid='"+pid2+"']").each(function(){
+      if($(this).attr('checked')){
+        i++;  
+      }else{
+        return false; 
+      } 
+    });
+    if(i==l){
+      $(".group2[value='"+pid2+"']").attr("checked",true); 
+    }else{
+      $(".group2[value='"+pid2+"']").attr("checked",false);  
+    }
+  });
+  $(".group4").click(function(){
+    var pid=$(this).attr("data-pid"); 
+    var l=$(".group4[data-pid='"+pid+"']").length;
+    var i=0;
+    $(".group4[data-pid='"+pid+"']").each(function(){
+      if($(this).attr('checked')){
+        i++;  
+      }else{
+        return false; 
+      } 
+    });
+    if(i==l){
+      $(".group3[value='"+pid+"']").attr("checked",true); 
+    }else{
+      $(".group3[value='"+pid+"']").attr("checked",false);  
+    }
+  });
+
+   $(".group2").click(function(){
+    if($(this).attr('checked')){
+      $(".group3").attr("checked",true);
+      $(".group4").attr("checked",true);
+    }
+    if(!$(this).attr('checked')){
+           if($('.group3').attr('checked')&&($('.group4').attr('checked'))){
+            $('.group2').attr("checked",true);
+          }else{
+            $(".group2").attr("checked",false);
+          } 
+      }
+  });
+});
+</script>
+<include file="Public:footer" />

@@ -1,0 +1,74 @@
+<include file="Public:header" />
+<link href="{sk::RES}/css/pages.css" rel="stylesheet" type="text/css"  media="all" />
+<div id="main">
+  <div class="container-fluid">
+    <div class="row-fluid">
+      <div class="span12">
+        <div class="box">
+          <div class="box-title">
+            <div class="span2">
+              <h3> <i class="icon-table"></i>
+                栏目管理
+              </h3>
+            </div>
+          </div>
+          <div class="box-content nozypadding" style="width:100%;">
+            <div class="row-fluid">
+              <div class="span8 control-group">
+                <a href="{sk::U('Article/add',array('cateid'=>
+                       $cateid,'scateid'=>$cateid))}" class="btn" title="添加文章">
+                        <i class="icon-plus"></i>
+                        添加文章
+                      </a>
+              </div>
+            </div>
+            <div class="row-fluid dataTables_wrapper">
+              <table id="listTable" class="table table-hover table-nomargin table-bordered usertable dataTable">
+                <thead >
+                  <tr>
+                    <th>栏目ID</th>
+                    <th>栏目名称</th>
+                    <th>栏目图标</th>
+                    <th>文章数量</th>       
+                    <th>操作</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <volist name="sublist" id="vo">
+                    <tr>
+                      <td>{sk:$vo.id}</td>
+                      <td>{sk:$vo.catename}</td>                           
+                      <td>
+                       <if condition="$vo['pic'] neq ''">
+                      <img src="{sk:$vo.pic}" width="50px;" height="40px">
+                      <else/>未上传图片
+                      </if>
+                      </td>
+                      <td>{sk:$vo.num}</td>
+                    <td>
+                      <a href="{sk::U('Article/lists',array('cateid'=>
+                       $cateid,'catename'=>$vo['id']))}" class="btnra" title="查看文章">
+                        <i class="icon-eye-open"></i>
+                        查看文章
+                      </a>
+                      <a href="{sk::U('Article/add',array('cateid'=>
+                       $cateid,'scateid'=>$vo['id']))}" class="btnra" title="添加文章">
+                        <i class="icon-plus"></i>
+                        添加文章
+                      </a>
+                    </td>
+                  </tr>
+                </volist>
+              </tbody>
+            </table>
+            <div class="dataTables_paginate paging_full_numbers">
+              <span>{sk:$page}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<include file="Public:footer" />

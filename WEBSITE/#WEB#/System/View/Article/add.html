@@ -1,0 +1,179 @@
+<include file="Public:header" />
+<link rel="stylesheet" type="text/css" href="{sk::STATICS}/kindeditor/themes/default/default.css" />
+<script type="text/javascript" src="{sk::STATICS}/kindeditor/kindeditor-min.js"></script>
+<script type="text/javascript" src="{sk::STATICS}/kindeditor/lang/zh_CN.js"></script>
+<link rel="stylesheet" type="text/css" href="{sk::RES}/css/uploadify_t.css" />
+<script type="text/javascript" src="{sk::RES}/js/jquery_uploadify.js"></script>
+
+<div id="main">
+  <div class="container-fluid">
+    <div class="row-fluid">
+      <div class="span12">
+        <div class="box">
+          <div class="box-title">
+            <div class="span10">
+              <h3><i class="icon-plus"></i>添加文章管理</h3>
+            </div>
+            <div class="span2"><a class="btn" href="Javascript:history.back();">返回</a></div>
+          </div>
+          <div class="box-content">
+          <form action="{sk::U('Article/insert')}" method="post" id="form1" name="form1" class="form-horizontal form-validate">
+          <input type="hidden" name="cate_id" value="{sk:$cateid}"/>
+          <input type="hidden" name="versionid" value="{sk:$column['versionid']}"/>
+              <div class="control-group">
+                <label for="title" class="control-label">文章标题：</label>
+                <div class="controls">
+                <input type="text" name="title" style="width:600px;" data-rule-required="true" data-rule-maxlength="100" placeholder="最多不能超过100个字符" value="" />　　
+                是否加粗：<input type="radio" name="isstrong" value="1">是　
+                  <input type="radio" name="isstrong" checked value="0">否
+                  <span class="maroon">*</span>
+                  </div>
+              </div>
+              <div class="control-group">
+                <label for="istop" class="control-label">文章是否置顶：</label>
+                  <div class="controls">
+                  <input type="radio" name="istop" value="1">是　
+                  <input type="radio" name="istop" checked value="0">否
+                </div>
+              </div>
+               <div class="control-group">
+                <label for="subtitle" class="control-label">文章子标题：</label>
+                  <div class="controls">
+                  <input type="text" name="subtitle" style="width:700px;" placeholder="填写子标题，可以在列表页和内容页中展示，若不展示，你也可以不填" value="">　
+                </div>
+              </div>
+              <div class="control-group">
+                <label for="color" class="control-label">标题颜色：</label>
+                  <div class="controls">
+                  <input id="color" type="text" name="color" class="input-small" value="#000000">
+                  <input id="colorpicker" type="button" value="取色器">（<font color="red">*只能给网站的页面显示标题的颜色</font>）
+                </div>
+              </div>
+               <div class="control-group">
+                <label for="remark" class="control-label">文章备注：</label>
+                  <div class="controls">
+                  <input type="text" name="remark" style="width:600px;" value="">　
+                </div>
+              </div>
+              <div class="control-group">
+                <label for="cateid" class="control-label">所属栏目：</label>
+                <div class="controls">
+                	<select name="cateid" id="lanmu" class="input-medium" onchange="changelanmu();">
+                    	<volist name="catearr" id="voc">
+                        <if condition="count($voc['subcat']) gt 0">
+                    	<option disabled="disabled" style="background-color:#eeeeee;">{sk:$voc.catename}</option>
+                        	<volist name="voc.subcat" id="vosub">
+                            <option  value="{sk:$vosub.id}" pid="{sk:$voc.id}" <if condition="$vosub['id'] eq $column['cateid']">selected="selected"</if>>----{sk:$vosub.catename}</option>
+                            </volist>
+                        <else />
+                        <option value="{sk:$voc.id}" pid="0" <if condition="$voc['id'] eq $column['cateid']">selected="selected"</if>>{sk:$voc.catename}</option>
+                        </if>
+                        </volist>
+                    </select> 
+                 
+                  <span class="maroon">*</span> <span class="help-inline"></span></div>
+              </div> 
+              <div class="control-group">
+                <label class="control-label" for="pic">文章封面图片:</label>
+                <div class="controls">
+                  <input type="text" id="pic" name="pic" class="input-xlarge" readonly value="" />
+                  <button class="btn btn-primary select_img" type="button">选择图片</button>
+                   <span class="help-inline">{sk::gettips('article','pic',$column['versionid'])}</span> </div>
+              </div>
+               <div class="control-group">
+                <label for="source" class="control-label">文章来源：</label>
+                <div class="controls">
+                  <input type="text" name="source" value="本站" data-rule-required="true" />
+                  <span class="maroon">*</span> <span class="help-inline"></span> </div>
+              </div>
+              <div class="control-group">
+                <label for="author" class="control-label">编辑人：</label>
+                <div class="controls">
+                  <input type="text" name="author" value="{sk:$userid|getusername}"  />
+                  <span class="help-inline"></span> </div>
+              </div> 
+               <div class="control-group">
+                  <if condition="$column.columnmodel eq 1">
+                  <!-- 文章模型 -->
+                   <label for="content" class="control-label">信息描述：</label>
+                   <div class="controls">
+                   <textarea name="content" cols="30"  row="30" class="editors2"></textarea>
+                    <span class="maroon">*</span> <span class="help-inline"></span>
+                    </div> 
+                  <elseif condition=" $column.columnmodel eq 2"/>
+                  <!-- 图文混合类模型 -->
+                  <label for="content" class="control-label">文章详情：</label>
+                  <div class="controls">
+                   <textarea id="info" name="content" style="width:70%; height:400px" class="editors"></textarea>     
+                   </div> 
+                  <elseif condition="$column.columnmodel eq 3"/>
+                  <!-- 图集类模型 -->
+                	<label for="content" class="control-label">图片信息：</label>
+                     <div class="controls">
+                     <input id="file_upload" type="file" />
+                     <ul class="ipost-list ui-sortable" id="fileList">
+                     
+                    </ul>
+                     <div id="file_upload_queue" class="uploadifyQueue"> </div>
+                  </div>
+                  <script type="text/javascript">
+					var count=5;
+					var swfurl="{sk::RES}/flash/uploadify.swf";
+					var uploadurl="{sk::U('Base/uploads')}";//上传文件路径
+					var delurl="{sk::U('Index/delimg')}";//删除文件路径
+					</script>
+					<script src="{sk::RES}/js/shangchuan.js"></script>       
+                  </if>
+                </div>
+         
+             <div class="form-actions">
+                <button name="dosubmit" id="dosubmit" type="submit" data-loading-text="提交中..." class="btn btn-primary">发布文档</button>
+                <a class="btn" href="javascript:history.back();">取消</a> 
+             </div>
+          </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  KindEditor.ready(function(K) {
+    var editor2 = K.create("textarea.editors2", G2.set.KindEditor_seting);
+        var colorpicker;
+        K('#colorpicker').bind('click', function(e) {
+          e.stopPropagation();
+          if (colorpicker) {
+            colorpicker.remove();
+            colorpicker = null;
+            return;
+          }
+          var colorpickerPos = K('#colorpicker').pos();
+          colorpicker = K.colorpicker({
+            x : colorpickerPos.x,
+            y : colorpickerPos.y + K('#colorpicker').height(),
+            z : 19811214,
+            selectedColor : 'default',
+            noColor : '无颜色',
+            click : function(color) {
+              K('#color').val(color);
+              colorpicker.remove();
+              colorpicker = null;
+            }
+          });
+        });
+        K(document).click(function() {
+          if (colorpicker) {
+            colorpicker.remove();
+            colorpicker = null;
+          }
+        });
+      }); 
+function changelanmu(){
+	var pid=$('#lanmu option:selected').attr('pid');
+	var sid=$('#lanmu').val();
+	location.href="{sk::U('Article/add')}&cateid="+pid+"&scateid="+sid;
+}
+</script>
+<include file="Public:footer" />

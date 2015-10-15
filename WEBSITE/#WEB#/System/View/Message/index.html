@@ -1,0 +1,98 @@
+<include file="Public:header" />
+<div id="main">
+  <div class="container-fluid">
+    <div class="row-fluid">
+      <div class="span12">
+        <div class="box">
+          <div class="box-title">
+            <div class="span2">
+              <h3> <i class="icon-table"></i>
+               留言列表管理
+              </h3>
+            </div>
+            <div class="fr">
+              <form name="searchform" action="{sk::U('Message/index')}" method="post" class="form-horizontal">
+              <input name="username" type="text" class="input-text" value="{sk:$username}" placeholder="姓名"/>&nbsp;
+               <select class="input-medium" name="_order" id="ver" data-rule-required="true" data-rule-notem="true">
+                 <option value="createtime" <if condition="$_order eq 'createtime'"> selected="selected" </if>>时间</option>
+                 </select>&nbsp;
+               <select class="input-medium" name="_sort" id="ver" data-rule-required="true" data-rule-notem="true">
+                 <option value="">排序方式</option>
+                 <option value="asc" <if condition="$_sort eq 'asc'"> selected="selected" </if>>升序排序</option><option value="desc" <if condition="$_sort eq 'desc'"> selected="selected" </if>>降序排序</option>
+                 </select>&nbsp;
+                 <select name="isread" data-rule-required="true"> 
+                   <option value="">是否查看</option>
+                 <option value="1" <if condition="$isread eq '1'"> selected="selected" </if>>已查看</option><option value="2" <if condition="$isread eq 2"> selected="selected" </if>>未查看</option>
+                 </select>&nbsp; 
+                <input type="submit" id="dosubmit" name="search" class="btncx" value="搜索" />
+             </form>
+            </div>
+          </div>
+          <div class="box-content nozypadding" style="width:100%;">
+            <div class="row-fluid">
+              <div class="span8 control-group">
+               　<a class="btn" href="javascript:location.reload()">
+                  <i class="icon-refresh"></i>
+                  刷新
+                </a>
+              </div>
+            </div>
+            <div class="row-fluid dataTables_wrapper">
+              <table id="listTable" class="table table-hover table-nomargin table-bordered usertable dataTable">
+                <thead >
+                  <tr>
+                    <th>编号</th>
+                    <th>姓名</th>
+                    <th>性别</th>
+                    <th>电话号码</th>
+                    <th>地址</th>
+                    <th>Email</th>
+                    <th>留言时间</th>  
+                    <th>是否查看</th>       
+                    <th>操作</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <volist name="list" id="vo">
+                    <tr>
+                      <td>{sk:$vo.id}</td>
+                      <td>{sk:$vo.username}</td>
+                      <td><if condition="$vo.sex eq 1">男<elseif condition="$vo.sex eq 2"/>女<else/>保密</if></td>                   
+                      <td>{sk:$vo.phone}</td>
+                      <td>{sk:$vo.address}</td>
+                      <td>{sk:$vo.email}</td>
+                      <td>{sk:$vo.createtime|date="Y-m-d H:i:s",###}</td>
+                      <td class="statuscg">
+                        <if condition="$vo.isread eq 1">
+                          <span class="label label-success">已查看</span>
+                        <else />
+                          <span class="label label-warning">未查看</span>
+                        </if>
+                      </td>              
+                    <td>
+                      <a href="{sk::U('Message/detail',array('id'=>
+                        $vo['id']))}" class="btnra" title="查看">
+                        <i class="icon-eye-open"></i>
+                        查看留言
+                      </a>
+                       <a href="{sk::U('Message/leave_message',array('id'=>
+                        $vo['id']))}" class="btnra" title="回复留言">
+                        <i class="icon-plus"></i>
+                        回复留言
+                      </a>
+                    </td>
+                  </tr>
+                </volist>
+              </tbody>
+            </table>
+            <div class="dataTables_paginate paging_full_numbers">
+              <span>{sk:$page}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<include file="Public:footer" />

@@ -1,0 +1,31 @@
+<div class="zhuren mrt30">
+  <!--实验室主任-->
+  <div class="jcon" >
+    <ul class="zr_list">
+      <volist name="lists" id="vo">
+        <li>
+          <div class="zr_list_left">
+            <a href="{sk::U('News/news',array('pid'=>1,'cateid'=>$cateid,'versionid'=>$versionid,'id'=>$vo['id']))}">
+              <img src="{sk:$vo['pic']}" />
+            </a>
+          </div>
+          <div class="zr_list_right">
+            <h3 class="fs20 fonth">
+              <a href="{sk::U('News/news',array('pid'=>$pid,'cateid'=>$cateid,'versionid'=>$versionid,'id'=>$vo['id']))}"><font color="{sk:$vo.color}" class="abc">{sk:$vo.title}</font></a>
+            </h3>
+            <if condition="$vo['subtitle'] neq ''">
+              <h4 class="fs16 fonth ells">{sk:$vo.subtitle}</h4>
+            </if>
+            <div class="line">
+              <hr /> <b></b>
+            </div>
+            {sk:$vo.content|htmlspecialchars_decode|strip_tags|msubstr=0,450}
+          </div>
+        </li>
+      </volist>
+    </ul>
+    <span class="guidelist">{sk:$page}</span>
+  </div>
+</div>
+</div>
+</div>

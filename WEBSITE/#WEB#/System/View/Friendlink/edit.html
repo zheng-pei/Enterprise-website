@@ -1,0 +1,76 @@
+<include file="Public:header" />
+<link rel="stylesheet" type="text/css" href="{sk::STATICS}/kindeditor/themes/default/default.css" />
+<script type="text/javascript" src="{sk::STATICS}/kindeditor/kindeditor-min.js"></script>
+<script type="text/javascript" src="{sk::STATICS}/kindeditor/lang/zh_CN.js"></script>
+
+<div id="main">
+  <div class="container-fluid">
+    <div class="row-fluid">
+      <div class="span12">
+        <div class="box">
+          <div class="box-title">
+            <div class="span10">
+              <h3><i class="icon-edit"></i>编辑友情链接</h3>
+            </div>
+            <div class="span2"><a class="btn" href="Javascript:history.back();">返回</a></div>
+          </div>
+          <div class="box-content">
+          <form action="{sk::U('Friendlink/update')}" method="post" id="form1" name="form1" class="form-horizontal form-validate">
+          <input type="hidden" name="getid" value="{sk:$vo.id}"/>
+               <div class="control-group">
+                <label for="type" class="control-label">网站版本：</label>
+                 <div class="controls">
+                 <input type="text" name="versionid" readonly="true" value="{sk:$versionname.versionname}">
+                  <span class="maroon">*</span> <span class="help-inline"></span></div>
+              </div>
+          	  <div class="control-group">
+                <label for="username" class="control-label">友情链接网站名：</label>
+                <div class="controls">
+                  <input type="text" name="title" id="title" class="input-large" data-rule-required="true" data-rule-maxlength="20" placeholder="请输入友情链接网站名称" value="{sk:$vo.title}" />
+                  <span class="maroon">*</span> <span class="help-inline"></span> </div>
+              </div>
+                <div class="control-group">
+                <label class="control-label" for="pic">logo图片:</label>
+                <div class="controls">
+                  <input type="text" id="pic" name="pic" class="input-xlarge" readonly value="{sk:$vo.pic}" />
+                  <button class="btn btn-primary select_img" type="button">选择图片</button>
+                   <span class="help-inline"></span>{sk::gettips('category','pic',1)}  </div>
+              </div>
+               <div class="control-group">
+                <label for="url" class="control-label">链接地址：</label>
+                <div class="controls">
+                  <input type="url" name="url" class="input-large" data-rule-required="true" data-rule-url="true" value="{sk:$vo.url}" />
+                  <span class="maroon">*</span> <span class="help-inline"></span> </div>
+              </div>
+              <div class="control-group">
+                <label for="showtype" class="control-label">选择链接类型：</label>
+                <div class="controls">
+                  <select name="showtype" id="status">
+                  <option value="1" <if condition="$vo.showtype eq 1">selected</if>>文字链接</option>
+                  <option value="2" <if condition="$vo.showtype eq 2">selected</if>>logo链接</option>
+                  </select>
+                  <span class="maroon">*</span> <span class="help-inline"></span> </div>
+              </div>
+              <div class="control-group">
+                <label for="status" class="control-label">是否启用：</label>
+                <div class="controls">
+                  <select name="status" id="status">
+                  <option value="1" <if condition="$vo['status'] eq 1">selected</if>>启用</option>
+                  <option value="2" <if condition="$vo['status'] eq 2">selected</if>>禁用</option>
+                  </select>
+                  <span class="maroon">*</span> <span class="help-inline"></span> </div>
+              </div>
+             <div class="form-actions">
+                <button id="bsubmit" type="submit" data-loading-text="提交中..." class="btn btn-primary">保存</button>
+                <a class="btn" href="javascript:history.back();">取消</a> 
+             </div>
+          </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript" src="{sk::RES}/js/jquery_uploadify.js"></script>
+<script type="text/javascript" src="{sk::RES}/js/jupload.js"></script>
+<include file="Public:footer" />

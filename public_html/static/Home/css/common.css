@@ -1,0 +1,114 @@
+@charset "utf-8";
+/* CSS Document */
+* {
+      padding: 0;
+      margin: 0;
+	  font-family:"宋体"; font-size:12px;
+}
+body{background:#fff;}
+img{border:none;}
+.width_1100{width:1100px; margin:0 auto;}
+a img, :link img, :visited img {
+       border:0px;
+} 
+ul {
+    list-style: none;
+}
+a, a:link, a:visited, a:hover, a:active{
+    text-decoration:none
+} 
+a:focus{outline:none;}
+h1,h2,h3,h4,h5,h6,b,i { 
+    font-weight: normal; 
+    font-size: 100%; 
+} 
+ol,ul { 
+    list-style: none; 
+} 
+.clear{
+	clear:both
+	}
+.clearfix:after { 
+    content:"\200B"; 
+    display:block; 
+    height:0; 
+    clear:both; 
+} 
+a:visited{color:#000}
+i{ font-style:normal}
+p{line-height:150%}
+.c_h2{font-size:30px;color:#013e75;}
+.clearfix {*zoom:1;}
+.color_blue{color:#013e75;}
+.color29{color:#292929!important}
+.color84{color:#848484}
+a.color29:visited{color:#292929}
+a.color_blue:visited{color:#013e75;}
+a.color84:visited{color:#848484}
+.font_18{font-size:18px!important;}
+.tc{text-align:center}
+.tl{text-align:left}
+.tr{ text-align:right}
+.fl{float:left}
+.fr{float:right}
+.mr25{margin:25px 0}
+.mr20{margin:20px 0}
+.mrt30{margin-top:33px;}
+.mrb30{margin-bottom:30px;}
+.pdbo{padding-bottom:50px;}
+.pd20{padding:0 20px;}
+.fs16{font-size:16px;}
+.fs18{font-size:18px;}
+.fs20{font-size:20px;}
+.fonth{ font-family:"微软雅黑"}
+.span2{width:22%}
+.span4{width:34%}
+.span1{width:10%}
+.span3{width:30%}
+
+.ells{ white-space:nowrap; text-overflow:ellipsis; overflow:hidden}
+.noline{border:0!important}
+
+/* head */
+.container{width:100%;}
+.headerbg{width:100%;background:#fff;}
+.header{height:128px;}
+.header .h_box{width:565px;height:80px;padding:23px 0;float:left}
+.header .h_box a{display:block;overflow:hidden}
+.header .h_box .h_logo{width:76px;height:76px;float:left;}
+.header .h_box .h_wname{width:350px;height:80px;float:left;padding-left:20px;}
+.header .h_box .h_wname i{width:314px;height:27px;display:block;padding:12px 0 8px 0;}
+.header .h_search{float:left;width:330px;margin-top:45px;}
+.header .h_search .h_so{width:100%;height:46px;background-image:url(../images/img04.png); background-repeat:no-repeat}
+.header .h_search .h_so .h_sk{width:280px;height:46px;display:block;float:right;}
+.header .h_search .h_so .h_sk input{width:90%;border:0;line-height:44px;height:44px; outline:none;margin:1px 0;}
+input::-webkit-input-placeholder{color:#c4c4c4;}
+input::-o-input-placeholder{color:#c4c4c4;}
+input::-ms-input-placeholder{color:#c4c4c4;}
+input::-moz-placeholder{color:#c4c4c4;}
+.header .h_search .h_so .h_sbtn{display:block;float:left;margin:14px 0 0 18px;width:20px;height:22px; }
+.header .h_search .h_so .h_sbtn input{width:100%;height:inherit;border:0;cursor:pointer;background:url(../images/img03.png) no-repeat center center; outline:none;}
+.header .zh_en{float:right;padding-top:45px;}
+.header .zh_en li{float:left;margin:0 6px;}
+.header .zh_en li a{display:block;border-radius:100%;-webkit-border-radius:100%; position:relative; behavior:url(../public_html/static/css3.htc);background:#fff;width:43px;height:43px; text-align:center;line-height:45px;color:#013e75;border:1px solid #013e75;font-size:14px;}
+.header .zh_en li a.cur{background:#013e75;color:#fff;border:1px solid #013e75;font-size:12px;}
+/* nav */
+.nav{width:100%;background:#013e75;}
+.navlist{position:relative;}
+.navlist li{float:left;}
+.navlist li a{display:block;color:#fff;padding:0 31px;height:50px;line-height:50px;font-size:12px;}
+#ennavlist{padding:0 14px;font-family: Arial}
+.navlist li a:hover{background:#004e8f;}
+.navlist li a.cur{background:#004e8f;}
+.navlist li dl dd a:hover{background:none;}
+.navlist li dl{width:1100px;position:absolute;left:0;top:50px;background:rgba(0,0,0,0.5) !important;z-index:100;display:none;filter:progid:DXImageTransform.Microsoft.Gradient(startColorstr=#50000000, endColorstr=#50000000); }
+.navlist li:hover dl{display:block}
+.navlist li dl dd{ float:left;}
+.navlist li dl dd a{ display:block;line-height:63px;color:#fff;padding:0 20px;height:63px;}
+.navlist li dl dd a:hover{color:#fff;}
+/* footer */
+.footer{width:100%;background:#013e75;text-align:center;padding:34px 0;color:#fff;}
+.footer span{display:block;float:left;width:222px;height:46px;}
+.footxt{width:875px;float:right}
+.footer p{font-size:12px;line-height:150%}
+

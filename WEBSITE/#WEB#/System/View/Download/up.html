@@ -1,0 +1,58 @@
+<include file="Public:header" />
+<link rel="stylesheet" type="text/css" href="{sk::STATICS}/kindeditor/themes/default/default.css" />
+<script type="text/javascript" src="{sk::STATICS}/kindeditor/kindeditor-min.js"></script>
+<script type="text/javascript" src="{sk::STATICS}/kindeditor/lang/zh_CN.js"></script>
+<link rel="stylesheet" type="text/css" href="{sk::RES}/css/uploadify_t.css" media="all" />
+<script type="text/javascript" src="{sk::RES}/js/jquery_uploadify.js"></script>
+<script type="text/javascript" src="{sk::RES}/js/jupload.js"></script>
+<div id="main">
+  <div class="container-fluid">
+    <div class="row-fluid">
+      <div class="span12">
+        <div class="box">
+          <div class="box-title">
+            <div class="span10">
+              <h3><i class="icon-edit"></i>文件上传管理</h3>
+            </div>
+            <div class="span2"><a class="btn" href="Javascript:history.back();">返回</a></div>
+          </div>
+          <div class="box-content">
+          <form action="{sk::U('Download/insert')}" method="post" id="form1" name="form1" class="form-horizontal form-validate">
+          <input type="hidden" name="getid" value="{sk:$vo.id}"/>
+              <div class="control-group">
+                <label for="type" class="control-label">网站版本：</label>
+                 <div class="controls">
+                 <input type="hidden" name="versionid" value="{sk:$key}"/>
+                   <select class="input-medium" name="versionid" id="ver" data-rule-required="true" data-rule-notem="true">
+                 <volist name="versionlist" id="vo"> <option value="{sk:$key}">{sk:$vo}</option></volist>
+                 </select>
+                 </div>
+              </div>
+                <div class="control-group">
+                <label for="title" class="control-label">文件标题：</label>
+                <div class="controls">
+                  <input type="text" name="title" class="input-xlarge" data-rule-required="true" data-rule-maxlength="40" placeholder="最多输入40个字符"　value="" />
+                  <span class="maroon">*</span> <span class="help-inline"></span> </div>
+              </div>
+              <div class="control-group">
+                <label class="control-label" for="url">文件上传：</label>
+                <div class="controls">
+                  <input type="text" id="file" name="url" class="input-xlarge" readonly data-rule-required="true" value="" />
+                  <span class="help-inline">
+                  <button class="btn btn-primary select_file" type="button">选择文件</button>
+                </span> <span class="help-inline">允许上传格式（<font color="blue">doc,docx,xls,xlsx,ppt,htm,html,txt,zip,rar,gz,bz2</font>）</span> </div>
+              </div>
+             <div class="form-actions">
+                <button id="bsubmit" type="submit" data-loading-text="提交中..." class="btn btn-primary">保存</button>
+                <a class="btn" href="javascript:history.back();">取消</a> 
+             </div>
+          </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript" src="{sk::RES}/js/jquery_uploadify.js"></script>
+<script type="text/javascript" src="{sk::RES}/js/jupload.js"></script>
+<include file="Public:footer" />

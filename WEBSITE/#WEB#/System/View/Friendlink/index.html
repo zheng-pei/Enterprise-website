@@ -1,0 +1,123 @@
+<include file="Public:header" />
+<div id="main">
+  <div class="container-fluid">
+    <div class="row-fluid">
+      <div class="span12">
+        <div class="box">
+          <div class="box-title">
+            <div class="span2">
+              <h3> <i class="icon-table"></i>
+                友情链接管理
+              </h3>
+            </div>
+            <div class="fr">
+             
+              <form name="searchform" action="{sk::U('Friendlink/index')}" method="post" class="form-horizontal">
+                 <select class="input-medium" name="versionid" data-rule-required="true" data-rule-notem="true">
+                 <option value="0">网站版本</option>
+                 <volist name="versionlist" id="vo"> <option value="{sk:$key}" <if condition="$versionid eq $key"> selected="selected" </if>>{sk:$vo}</option></volist>
+                 </select>&nbsp;
+                 <select class="input-medium" name="showtype" id="type" data-rule-required="true" data-rule-notem="true">
+                 <option value="0">链接类型</option>
+                 <option value="1" <if condition="$showtype eq 1"> selected="selected" </if>>文本链接</option>
+                 <option value="2" <if condition="$showtype eq 2"> selected="selected" </if>>LOGO链接</option>
+                 </select>&nbsp;
+                 <input name="title" type="text" class="input-text" size="25" value="{sk:$title}" placeholder="链接标题"/>
+                  <select class="input-medium" name="_order" id="ver" data-rule-required="true" data-rule-notem="true">
+                 <option value="createtime" <if condition="$_order eq 'createtime'"> selected="selected" </if>>按时间</option>
+                 </select>&nbsp;
+
+                 <select class="input-medium" name="_sort" id="_sort" data-rule-required="true" data-rule-notem="true">
+                 <option value="desc" <if condition="$_sort eq 'desc'"> selected="selected" </if>>降序排列</option>
+                 <option value="asc" <if condition="$_sort eq 'asc'"> selected="selected" </if>>升序排列</option>
+                 </select>&nbsp;
+             <input type="submit" id="dosubmit" name="search" class="btncx" value="搜索" />
+             </form>
+            </div>
+          </div>
+          <div class="hide"><font style="font-size:16px;">********后台展示文字链接和logo链接，这里<font color="blue">“链接类型代表网站页面的链接类型”</font>********</font></div>
+          <div class="box-content nozypadding" style="width:100%;">
+            <div class="row-fluid">
+              <div class="span8 control-group">
+                <a class="btn" href="{sk::U('Friendlink/add')}"> <i class="icon-plus"></i>
+                  添加友情链接
+                </a>　<a class="btn" href="javascript:location.reload()">
+                  <i class="icon-refresh"></i>
+                  刷新
+                </a>
+              </div>
+            </div>
+            <div class="row-fluid dataTables_wrapper">
+              <table id="listTable" class="table table-hover table-nomargin table-bordered usertable dataTable">
+                <thead >
+                  <tr>
+                    <th>编号</th>
+                    <th>链接标题</th>
+                    <th>链接类型</th>
+                    <th>链接地址</th>
+                    <th>链接logo</th>
+                    <th>创建时间</th>
+                    <th>版本</th>      
+                    <th>状态</th>            
+                    <th>操作</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <volist name="list" id="vo">
+                    <tr>
+                      <td>{sk:$vo.id}</td>
+                      <td>{sk:$vo.title}</td>
+                      <td><if condition="$vo.showtype eq 1">文本链接<else/>logo链接</if></td>
+                      <td><font color="blue"><a href="{sk:$vo.url}" target="_blank">{sk:$vo.url}</a></font></td>                   
+                      <td>
+                      <if condition="$vo.pic neq ''">
+                      <img src="{sk:$vo.pic}" width="50px;" height="40px">
+                      </if>
+                      </td>
+                      <td>{sk:$vo.createtime|date="Y-m-d H:i:s",###}</td>
+                      <td>{sk:$vo.versionname}</td>
+                    <td class="statuscg">
+                      <if condition="$vo['status'] eq 1">
+                        <span class="label label-success">启用</span>
+                        <else />
+                        <span class="label label-warning">禁用</span>
+                      </if>
+                    </td>
+                    <td>
+                      <if condition="$vo['status'] eq 1">
+                        <a href="javascript: drop_confirm('确定禁用？','{sk::U('Friendlink/changestatus',array('id'=>
+                          $vo['id'],'status'=>2,'p'=>$p))}')" class="btnra" title="禁用">
+                          <i class="icon-stop"></i>
+                          禁用
+                        </a>
+                        <else />
+                        <a href="javascript: drop_confirm('确定启用？','{sk::U('Friendlink/changestatus',array('id'=>
+                          $vo['id'],'status'=>1,'p'=>$p))}')" class="btnra" title="启用">
+                          <i class="icon-play"></i>
+                          启用
+                        </a>
+                      </if>
+                      <a href="{sk::U('Friendlink/edit',array('id'=>
+                        $vo['id']))}" class="btnra" title="编辑">
+                        <i class="icon-edit"></i>
+                        编辑
+                      </a>
+                      <a href="javascript: G.ui.tips.confirm('确定删除？','{sk::U("Friendlink/foreverdelete",array('id'=>
+                        $vo['id']))}')" class="btnra" title="删除">
+                        <i class="icon-remove"></i>
+                        删除
+                      </a>
+                    </td>
+                  </tr>
+                </volist>
+              </tbody>
+            </table>
+            <div class="dataTables_paginate paging_full_numbers"><span>{sk:$page}</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<include file="Public:footer" />

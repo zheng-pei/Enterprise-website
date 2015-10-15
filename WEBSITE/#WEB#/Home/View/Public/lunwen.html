@@ -1,0 +1,20 @@
+ <!--科研成果论文列表-->
+   <div class="ky_lunwen mrt30">
+     <ul>
+       <volist name="lists" id="vo">
+       <li>
+         <h3>
+         <a href="{sk::U('News/news',array('pid'=>$pid,'cateid'=>$cateid,'versionid'=>$versionid,'id'=>$vo['id']))}" class="fs18" title="{sk:$vo.title}"><font color="{sk:$vo['color']}" class="abc">{sk:$vo.title|msubstr=0,60}</font></a>
+         </h3>
+          <if condition="$vo['subtitle'] neq ''">
+         <span class="color84 lb">{sk:$vo.subtitle|msubstr=0,40}</span>
+          </if>
+         <p class="color84 con">{sk:$vo.content|htmlspecialchars_decode|strip_tags|msubstr=0,150}</p>
+         <a href="{sk::U('News/news',array('pid'=>$pid,'cateid'=>$cateid,'id'=>$vo['id']))}" class="color_blue xq"><if condition="$versionid eq 1">点击展开阅读<else/>Click to view the details</if>>></a>
+       </li>
+        </volist>
+     </ul>
+       <span class="guidelist">{sk:$page}</span>
+    </div>   
+   </div> 
+  </div>

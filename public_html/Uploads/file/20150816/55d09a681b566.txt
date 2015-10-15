@@ -1,0 +1,18 @@
+按住win+R键左下角会弹出运行对话框，如图
+按住win+X键左下角滑出开始菜单直接选择命令提示符即可进入
+
+apache管理
+关闭
+httpd -k stop
+启动
+httpd -k start
+重启
+httpd -k restart
+
+mysql管理
+关闭：
+net stop mysql
+启动
+net start mysql
+
+ 
